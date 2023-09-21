@@ -9,10 +9,13 @@ function AddGame(props) {
   const [instructions, setInstructions] = useState("");
   const [description, setDescription] = useState("");
   const [gitHubLink, setGitHubLink] = useState("");
+
  
   const handleSubmit = (e) => {
     e.preventDefault();
  
+    const storedToken = localStorage.getItem('authToken');
+
     const newGame = { 
         title, 
         image, 
@@ -22,9 +25,13 @@ function AddGame(props) {
         description, 
         gitHubLink 
     };
-    
+
     axios
-      .post(`${import.meta.env.VITE_API_URL}/games`, newGame)
+      .post(
+        `${import.meta.env.VITE_API_URL}/games`, 
+        newGame, 
+        { headers: { Authorization: `Bearer ${storedToken}`} }
+      )
       .then((response) => {
         
         setTitle("");
@@ -76,6 +83,7 @@ function AddGame(props) {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
+          <option value="Not Specified">Select</option>
           <option value="Action">Action</option>
           <option value="Shooting">Shooting</option>
           <option value="Adventure">Adventure</option>

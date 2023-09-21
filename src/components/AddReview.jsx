@@ -13,6 +13,8 @@ function AddReview(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const storedToken = localStorage.getItem('authToken'); 
+
     const newReview = {
       title,
       review,
@@ -21,7 +23,10 @@ function AddReview(props) {
     };
 console.log(newReview);
     axios
-      .post(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews`, newReview)
+      .post(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews`, 
+      newReview,
+      { headers: { Authorization: `Bearer ${storedToken}`} }
+      )
       .then((response) => {
         setTitle("");
         setReview("");
