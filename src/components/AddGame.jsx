@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-  
+import service from "../services/file-upload.service"
+
 function AddGame(props) {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -10,41 +11,53 @@ function AddGame(props) {
   const [description, setDescription] = useState("");
   const [gitHubLink, setGitHubLink] = useState("");
 
- 
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+
+    uploadData.append("image", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData)
+      .then(response => {
+        setImage(response.fileUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
- 
+
     const storedToken = localStorage.getItem('authToken');
 
-    const newGame = { 
-        title, 
-        image, 
-        demo, 
-        category, 
-        instructions, 
-        description, 
-        gitHubLink 
+    const newGame = {
+      title,
+      image,
+      demo,
+      category,
+      instructions,
+      description,
+      gitHubLink
     };
 
     axios
       .post(
-        `${import.meta.env.VITE_API_URL}/games`, 
-        newGame, 
-        { headers: { Authorization: `Bearer ${storedToken}`} }
+        `${import.meta.env.VITE_API_URL}/games`,
+        newGame,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        
         setTitle("");
         setImage("");
         setDemo(""),
-        setCategory("")
+          setCategory("")
         setInstructions("")
         setDescription("");
         setGitHubLink("")
       })
       .catch((error) => console.log(error));
   };
-  
+
   return (
     <div>
       <h3>Add Game</h3>
@@ -61,12 +74,7 @@ function AddGame(props) {
         />
 
         <label>Image:</label>
-        <input
-          type="text"
-          name="image"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
 
         <label>Demo:</label>
         <input
@@ -120,5 +128,5 @@ function AddGame(props) {
     </div>
   );
 }
- 
+
 export default AddGame;

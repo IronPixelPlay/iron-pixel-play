@@ -4,6 +4,7 @@ import axios from "axios";
 import AddGame from "../components/AddGame";
 import GameCard from "../components/GameCard";
 import AddReview from "../components/AddReview";
+import service from "../services/file-upload.service";
 
 function GameListPage() {
   const [games, setGames] = useState(null);
