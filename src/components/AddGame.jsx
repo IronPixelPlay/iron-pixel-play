@@ -1,8 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
- 
-
- 
+  
 function AddGame(props) {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
