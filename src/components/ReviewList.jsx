@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useParams } from "react-router-dom";
+import ReviewCard from "./ReviewCard";
 
 function ReviewList() {
   const [reviews, setReviews] = useState(null);
@@ -27,7 +28,7 @@ function ReviewList() {
   ) : (
     <div>
       {reviews.map((review)=>{
-          return  <h3>{review.review}</h3>
+          return  <ReviewCard key={review._id}{...review}/> 
       })}
     </div>
   );
