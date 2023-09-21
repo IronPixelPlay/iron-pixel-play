@@ -6,7 +6,7 @@ function AddReview(props) {
   const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
-  const [played, setPlayed] = useState("");
+  const [played, setPlayed] = useState(false);
 
   const {gameId} = useParams()
 
@@ -19,13 +19,14 @@ function AddReview(props) {
       rating,
       played,
     };
-
+console.log(newReview);
     axios
       .post(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews`, newReview)
       .then((response) => {
         setTitle("");
         setReview("");
-        setRating(""), setPlayed("");
+        setRating(""), 
+        setPlayed(false);
       })
       .catch((error) => console.log(error));
   };
@@ -61,14 +62,13 @@ function AddReview(props) {
         />
 
         <label>Played:</label>
-        <select
+
+        <input
+          type="checkbox"
           name="played"
-          value={played}
-          onChange={(e) => setPlayed(e.target.value)}
-        >
-          <option value="true">Yes!</option>
-          <option value="false">No :c</option>
-        </select>
+          checked={played}
+          onChange={(e) => setPlayed(e.target.checked)}
+        />
 
         <button type="submit">Submit</button>
       </form>
