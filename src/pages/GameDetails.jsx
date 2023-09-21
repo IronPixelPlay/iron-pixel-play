@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddReview from "../components/AddReview";
+import ReviewList from "../components/ReviewList";
 
 function GameDetailsPage() {
 
@@ -13,7 +14,6 @@ function GameDetailsPage() {
     axios
       .get(`${import.meta.env.VITE_API_URL}/games/${gameId}`)
       .then((response) => {
-        console.log(response.data)
         setGame(response.data);
       })
       .catch((error) => {
@@ -40,6 +40,7 @@ function GameDetailsPage() {
         <p>Demo: <Link>{game.demo}</Link></p>
         <p>GitHub-Link: <Link>{game.gitHubLink}</Link></p>
         <AddReview/>
+        <ReviewList/>
       </div>
     );
   }
