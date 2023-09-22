@@ -7,7 +7,9 @@ import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import SignupPage from './pages/SingupPage'
 import Navbar from './components/Navbar'
+import CreateGame from "./pages/CreateGame"
 import { Route, Routes } from 'react-router-dom'
+import IsPrivate from './components/IsPrivate'
 
 function App() {
   
@@ -19,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/games" element={<GameListPage />} />
         <Route path="/games/:gameId" element={<GameDetailsPage />} />
+        <Route path='/games/create' element={<IsPrivate> <CreateGame/> </IsPrivate>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/user" element={<ProfilePage />} />

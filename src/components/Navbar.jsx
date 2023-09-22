@@ -20,7 +20,13 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
-          <NavLink to="/user"> <button>My Profile</button> </NavLink>
+          <NavLink to="/games/create">
+            <button>Upload your game!</button>
+          </NavLink>
+          <NavLink to="/user">
+            {" "}
+            <button>My Profile</button>{" "}
+          </NavLink>
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
         </>
@@ -28,8 +34,14 @@ function Navbar() {
 
       {!isLoggedIn && (
         <>
-          <NavLink to="/signup"> <button>Sign Up</button> </NavLink>
-          <NavLink to="/login"> <button>Login</button> </NavLink>
+          <NavLink to="/signup">
+            {" "}
+            <button>Sign Up</button>{" "}
+          </NavLink>
+          <NavLink to="/login">
+            {" "}
+            <button>Login</button>{" "}
+          </NavLink>
         </>
       )}
     </nav>

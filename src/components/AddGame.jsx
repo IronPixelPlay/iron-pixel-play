@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import service from "../services/file-upload.service";
+import { useNavigate } from "react-router-dom";
 
 function AddGame(props) {
   const [title, setTitle] = useState("");
@@ -10,6 +11,8 @@ function AddGame(props) {
   const [instructions, setInstructions] = useState("");
   const [description, setDescription] = useState("");
   const [gitHubLink, setGitHubLink] = useState("");
+
+  const navigate = useNavigate()
 
   const handleFileUpload = (e) => {
     
@@ -52,7 +55,7 @@ function AddGame(props) {
         setDescription("");
         setGitHubLink("");
         
-        props.refreshGames()
+        navigate(`/games`)
       })
       .catch((error) => console.log(error));
   };
