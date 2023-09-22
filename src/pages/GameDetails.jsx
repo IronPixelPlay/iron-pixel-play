@@ -39,7 +39,7 @@ function GameDetailsPage() {
         <p>Instructions: {game.instructions}</p>
         <p>Demo: <Link>{game.demo}</Link></p>
         <p>GitHub-Link: <Link>{game.gitHubLink}</Link></p>
-        <AddReview/>
+        
         <ReviewList/>
       </div>
     );

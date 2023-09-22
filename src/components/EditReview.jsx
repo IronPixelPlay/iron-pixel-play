@@ -5,7 +5,7 @@ import axios from "axios";
  
  
 function EditReview(props) {
-  console.log("MY HUMPS", props);
+  
   const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
@@ -19,7 +19,7 @@ function EditReview(props) {
     axios
     .get(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews/${props._id}`)
       .then((response) => {
-        console.log("AHHH", response);
+        
         const reviewToEdit = response.data;
         setTitle(reviewToEdit.title);
         setReview(reviewToEdit.review);
@@ -39,7 +39,7 @@ function EditReview(props) {
     .put(`${import.meta.env.VITE_API_URL}/games/${props.game}/reviews/${reviewId}`, requestBody)
       .then((response) => {
         props.setEditMode(false)
-        props.changeFunction()
+        props.refreshReviews()
         navigate(`/games/${props.game}`)
       })
       .catch((err) => console.log(err));

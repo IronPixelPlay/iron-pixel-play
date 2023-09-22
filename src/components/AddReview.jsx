@@ -21,7 +21,7 @@ function AddReview(props) {
       rating,
       played,
     };
-console.log(newReview);
+
     axios
       .post(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews`, 
       newReview,
@@ -32,6 +32,7 @@ console.log(newReview);
         setReview("");
         setRating(""), 
         setPlayed(false);
+        props.refreshReviews()
       })
       .catch((error) => console.log(error));
   };

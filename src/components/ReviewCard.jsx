@@ -16,7 +16,7 @@ function ReviewCard(props) {
     .delete(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews/${props._id}`)   
       .then(() => {
 
-        props.changeFunction()
+        props.refreshReviews()
         navigate(`/games/${gameId}`);
       })
       .catch((err) => console.log(err));

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import service from "../services/file-upload.service"
+import service from "../services/file-upload.service";
 
 function AddGame(props) {
   const [title, setTitle] = useState("");
@@ -12,23 +12,23 @@ function AddGame(props) {
   const [gitHubLink, setGitHubLink] = useState("");
 
   const handleFileUpload = (e) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    
     const uploadData = new FormData();
 
     uploadData.append("image", e.target.files[0]);
 
     service
       .uploadImage(uploadData)
-      .then(response => {
+      .then((response) => {
         setImage(response.fileUrl);
       })
-      .catch(err => console.log("Error while uploading the file: ", err));
+      .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem("authToken");
 
     const newGame = {
       title,
@@ -37,23 +37,22 @@ function AddGame(props) {
       category,
       instructions,
       description,
-      gitHubLink
+      gitHubLink,
     };
 
     axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/games`,
-        newGame,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
+      .post(`${import.meta.env.VITE_API_URL}/games`, newGame, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setTitle("");
         setImage("");
-        setDemo(""),
-          setCategory("")
-        setInstructions("")
+        setDemo(""), setCategory("");
+        setInstructions("");
         setDescription("");
-        setGitHubLink("")
+        setGitHubLink("");
+        
+        props.refreshGames()
       })
       .catch((error) => console.log(error));
   };
@@ -63,7 +62,6 @@ function AddGame(props) {
       <h3>Add Game</h3>
 
       <form onSubmit={handleSubmit}>
-
         <label>Title:</label>
         <input
           type="text"
