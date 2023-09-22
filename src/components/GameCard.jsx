@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 function GameCard({ title, description, image, _id }) {
-  return (
-    <div>
-        <Link to={`/games/${_id}`}>
-            <h3>{title}</h3>
-        </Link>
-        <img src={image} alt={title}/>
-        <p>{description} </p>
-    </div>
-);
+    return (
+        <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={image} />
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>
+                {description}
+                </Card.Text>
+                <Button href={`/games/${_id}`} variant="primary">Visit the Game</Button>
+            </Card.Body>
+        </Card>
+    );
 }
+
 
 export default GameCard;

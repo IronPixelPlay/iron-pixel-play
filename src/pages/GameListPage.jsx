@@ -30,12 +30,9 @@ function GameListPage() {
 
     return (
       <div>
-        <AddGame refreshGames={getAllGames} />
-
         {games.map((game) => (
           <GameCard key={game._id} {...game} />
         ))}
-
       </div>
     );
   };
