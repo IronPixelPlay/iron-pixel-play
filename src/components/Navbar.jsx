@@ -20,6 +20,7 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
+          <NavLink to="/user"> <button>My Profile</button> </NavLink>
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
         </>

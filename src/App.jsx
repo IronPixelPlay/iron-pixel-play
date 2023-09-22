@@ -21,7 +21,7 @@ function App() {
         <Route path="/games/:gameId" element={<GameDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        {/* <Route path="/profile" element={<ProfilePage />} /> */}
+        <Route path="/user" element={<ProfilePage />} />
       </Routes>
     </div>
   );
