@@ -1,12 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import EditReview from "./EditReview";
+import { AuthContext } from "../context/auth.context";
 
 
 function ReviewCard(props) {
-  
+  const contextData = useContext(AuthContext)
+   
   const navigate = useNavigate()
   const {gameId} = useParams()
   const [editMode, setEditMode] = useState(false)
@@ -36,8 +38,17 @@ function ReviewCard(props) {
       <p>{props.rating}</p>
       <h4>played:</h4>
       <p>{props.played}</p>
-      <button onClick={deleteReview}>Delete</button>
+      
+      {contextData.user._id === props.user && (
+      <div>
       <button onClick={() => {setEditMode(true)}} >Edit</button>
+      <button onClick={deleteReview}>Delete</button>
+      </div>
+      )
+      
+      }
+
+
       </section>
       )
   );
