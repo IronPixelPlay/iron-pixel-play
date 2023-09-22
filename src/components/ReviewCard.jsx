@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import EditReview from "./EditReview";
 
@@ -9,7 +9,7 @@ function ReviewCard(props) {
   
   const navigate = useNavigate()
   const {gameId} = useParams()
-
+  const [editMode, setEditMode] = useState(false)
   const deleteReview = () => {
 
     axios
@@ -24,7 +24,11 @@ function ReviewCard(props) {
 
  
   return (
-    <div>
+    editMode ? 
+      
+    <EditReview {...props} setEditMode={setEditMode}/>
+    :
+    (<section>
       <h3>{props.title}</h3>
       <h4>Comments:</h4>
       <p>{props.review}</p>
@@ -32,13 +36,10 @@ function ReviewCard(props) {
       <p>{props.rating}</p>
       <h4>played:</h4>
       <p>{props.played}</p>
-
       <button onClick={deleteReview}>Delete</button>
-
-    <EditReview {...props}/>
-
-      {/* <button onClick={deleteReview}>Edit</button> */}
-    </div>
+      <button onClick={() => {setEditMode(true)}} >Edit</button>
+      </section>
+      )
   );
   }
    

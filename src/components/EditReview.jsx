@@ -38,6 +38,7 @@ function EditReview(props) {
     axios
     .put(`${import.meta.env.VITE_API_URL}/games/${props.game}/reviews/${reviewId}`, requestBody)
       .then((response) => {
+        props.setEditMode(false)
         props.changeFunction()
         navigate(`/games/${props.game}`)
       })
