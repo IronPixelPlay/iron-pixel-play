@@ -12,6 +12,7 @@ function ReviewList() {
     axios
       .get(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews`)
       .then((response) => {
+        console.log(response);
         setReviews(response.data);
       })
       .catch((error) => {
@@ -28,7 +29,7 @@ function ReviewList() {
   ) : (
     <div>
       {reviews.map((review)=>{
-          return  <ReviewCard key={review._id}{...review}/> 
+          return  <ReviewCard key={review._id}{...review} changeFunction={getAllReviews}/> 
       })}
     </div>
   );
