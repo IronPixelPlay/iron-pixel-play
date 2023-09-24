@@ -24,10 +24,22 @@ function ReviewList() {
     getAllReviews();
   }, []);
 
+
+  const playedSum = reviews && reviews.filter(review => review.played).length
+  const averageRating = reviews && reviews.reduce((sum, review)=> sum+review.rating, 0)/reviews.length
+  
+
   return reviews === null ? (
     <h1>Loading</h1>
   ) : (
     <div>
+
+      <section>
+        <h2>Played by {playedSum}</h2>
+        <h2>Average rating: {averageRating}</h2>
+      </section>
+
+
       <AddReview refreshReviews={getAllReviews}/>
       {reviews.map((review)=>{
           return  <ReviewCard key={review._id}{...review} refreshReviews={getAllReviews}/> 
