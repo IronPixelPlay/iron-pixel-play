@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Row from "react-bootstrap/Row"
 
 import AddGame from "../components/AddGame";
 import GameCard from "../components/GameCard";
@@ -29,15 +30,21 @@ function GameListPage() {
     }
 
     return (
-      <div>
+      <Row>
         {games.map((game) => (
-          <GameCard key={game._id} {...game} />
+          <div key={game._id} className="col-md-3">
+            <GameCard {...game} />
+          </div>
         ))}
-      </div>
+      </Row>
     );
   };
 
-  return <>{renderList()}</>;
+  return (
+    <div style={{ marginTop: "20px" }}> 
+      {renderList()}
+    </div>
+  );
 }
 
 export default GameListPage;
