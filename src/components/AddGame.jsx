@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import service from "../services/file-upload.service";
 import { useNavigate } from "react-router-dom";
+import { Form, Button, Row, Col, Card, Container } from 'react-bootstrap';
 
 function AddGame(props) {
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ function AddGame(props) {
   const navigate = useNavigate()
 
   const handleFileUpload = (e) => {
-    
+
     const uploadData = new FormData();
 
     uploadData.append("image", e.target.files[0]);
@@ -54,80 +55,111 @@ function AddGame(props) {
         setInstructions("");
         setDescription("");
         setGitHubLink("");
-        
+
         navigate(`/games`)
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <div>
-      <h3>Add Game</h3>
-
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          required
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <label>Image:</label>
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
-
-        <label>Demo:</label>
-        <input
-          type="text"
-          name="demo"
-          value={demo}
-          required
-          onChange={(e) => setDemo(e.target.value)}
-        />
-
-        <label>Category:</label>
-        <select
-          name="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="Not Specified">Select</option>
-          <option value="Action">Action</option>
-          <option value="Shooting">Shooting</option>
-          <option value="Adventure">Adventure</option>
-          <option value="Trivia">Trivia</option>
-        </select>
-
-        <label>Instructions:</label>
-        <textarea
-          type="text"
-          name="instructions"
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-        />
-
-        <label>Description:</label>
-        <textarea
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-
-        <label>Git Hub Link:</label>
-        <input
-          type="text"
-          name="gitHubLink"
-          value={gitHubLink}
-          required
-          onChange={(e) => setGitHubLink(e.target.value)}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Container fluid className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+      <Card bg="dark" text="white" className="card-with-spacing bright-shadow" style={{ width: '700px' }}>
+        <Row className="justify-content-center">
+          <Col xs={12} sm={8} md={6}>
+            <h3 className="text-center">Add Game</h3>
+            <Form onSubmit={handleSubmit}>
+              <div className="text-center"> {/* Wrap form elements in a text-center div */}
+                <Form.Group controlId="title">
+                  <Form.Label>Title:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={title}
+                    required
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </Form.Group>
+  
+                <Form.Group controlId="image">
+                  <Form.Label>Image:</Form.Label>
+                  <Form.Control
+                    type="file"
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                </Form.Group>
+  
+                <Form.Group controlId="demo">
+                  <Form.Label>Demo:</Form.Label>
+                  <Form.Control
+                    type="url"
+                    value={demo}
+                    required
+                    onChange={(e) => setDemo(e.target.value)}
+                  />
+                </Form.Group>
+  
+                <Form.Group controlId="category">
+                  <Form.Label>Category:</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    style={{ textAlign: 'center' }}
+                  >
+                    <option value="Not Specified">Select</option>
+                    <option value="Action">Action</option>
+                    <option value="Shooting">Shooting</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Trivia">Trivia</option>
+                  </Form.Control>
+                </Form.Group>
+  
+                <Form.Group controlId="description">
+                  <Form.Label>Description:</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    value={description}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 60) {
+                        setDescription(e.target.value);
+                      }
+                    }}
+                  />
+                  <Form.Label style={{ color: 'white', fontSize: '14px' }}>
+                    {60 - description.length} characters remaining
+                  </Form.Label>
+                </Form.Group>
+  
+                <Form.Group controlId="instructions">
+                  <Form.Label>Instructions:</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    value={instructions}
+                    onChange={(e) => setInstructions(e.target.value)}
+                  />
+                </Form.Group>
+  
+                <Form.Group controlId="gitHubLink">
+                  <Form.Label>Your GitHub Link:</Form.Label>
+                  <Form.Control
+                    type="url"
+                    value={gitHubLink}
+                    required
+                    onChange={(e) => setGitHubLink(e.target.value)}
+                  />
+                </Form.Group>
+              </div>
+              <div className="text-center"> {/* Wrap the button in a text-center div */}
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </Card>
+    </Container>
   );
+  
 }
 
 export default AddGame;
