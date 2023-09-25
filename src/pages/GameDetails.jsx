@@ -71,8 +71,8 @@ function GameDetailsPage() {
             </div>
             <div>
               <strong>Demo:</strong> <br />
-              <Button variant="primary" onClick={toggleFullscreen} style={{ marginBottom: "10px", marginTop: "10px" }}>
-                Play the Game in Fullscreen
+              <Button variant="primary" onClick={toggleFullscreen} style={{ marginBottom: "10px", marginTop: "5px" }}>
+                Play the Game in Full Screen
               </Button>
               <div style={{ overflow: "hidden", height: "500px" }}>
                 <iframe
