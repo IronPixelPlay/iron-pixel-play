@@ -1,17 +1,23 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 
 function AddReview(props) {
   const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [played, setPlayed] = useState(false);
 
   const {gameId} = useParams()
+  
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
 
     const storedToken = localStorage.getItem('authToken'); 
 
@@ -30,7 +36,7 @@ function AddReview(props) {
       .then((response) => {
         setTitle("");
         setReview("");
-        setRating(""), 
+        setRating(0), 
         setPlayed(false);
         props.refreshReviews()
       })
@@ -50,15 +56,12 @@ function AddReview(props) {
           required
           onChange={(e) => setTitle(e.target.value)}
         />
-
-        <label>Rating:</label>
-        <input
-          type="number"
-          name="rating"
-          min={1}
-          max={5}
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
+        <Rating
+          ratingValue={rating}
+          onClick={handleRating}
+          onPointerEnter={() => {}}
+          onPointerLeave={() => {}}
+          onPointerMove={() => {}}
         />
 
         <label>Review:</label>
@@ -82,6 +85,7 @@ function AddReview(props) {
       </form>
     </div>
   );
+
 }
 
 export default AddReview;
