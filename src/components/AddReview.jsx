@@ -46,7 +46,7 @@ function AddReview(props) {
   };
 
   return (
-    <Container fluid className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+    <Container fluid className="d-flex align-items-center justify-content-center" >
       <Card bg="dark" text="white" className="bright-shadow" style={{ width: "700px" }}>
         <Form onSubmit={handleSubmit}>
           <Row className="justify-content-center">
