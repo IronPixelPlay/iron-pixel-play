@@ -39,7 +39,7 @@ function ReviewList() {
     <h1>Loading</h1>
   ) : (
     <div>
-      <section>
+      <section style={{marginTop:"20px", marginBottom:"-90px"}}>
         <h2>Played by {playedSum}</h2>
         <h2>Average rating: <span className="yellow-stars">{averageRatingStars}</span></h2>
       </section>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import { Container, Form, Button, Row, Col, Card } from "react-bootstrap"; // Import Bootstrap components
+
 
 function AddReview(props) {
   const [title, setTitle] = useState("");
@@ -44,46 +46,47 @@ function AddReview(props) {
   };
 
   return (
-    <div>
-      <h3>Add Review</h3>
+    <Container fluid className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+      <Card bg="dark" text="white" className="bright-shadow" style={{ width: "700px" }}>
+        <Form onSubmit={handleSubmit}>
+          <Row className="justify-content-center">
+            <Col xs={12} sm={8} md={6}>
+              <h3 className="text-center" style= {{marginTop: "20px"}}>Add Review</h3>
+              <Form.Group controlId="title" style={{ marginBottom: "10px" }}>
+                <Form.Label>Title:</Form.Label>
+                <Form.Control type="text" value={title} required onChange={(e) => setTitle(e.target.value)} />
+              </Form.Group>
 
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          required
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <Rating
-          ratingValue={rating}
-          onClick={handleRating}
-          onPointerEnter={() => {}}
-          onPointerLeave={() => {}}
-          onPointerMove={() => {}}
-        />
+              <Form.Group controlId="rating" style={{ marginBottom: "10px" }}>
+                <Form.Label>Rating:</Form.Label>
+                <Rating
+                  ratingValue={rating}
+                  onClick={handleRating}
+                  onPointerEnter={() => {}}
+                  onPointerLeave={() => {}}
+                  onPointerMove={() => {}}
+                />
+              </Form.Group>
 
-        <label>Review:</label>
-        <textarea
-          type="text"
-          name="review"
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-        />
+              <Form.Group controlId="review" style={{ marginBottom: "10px" }}>
+                <Form.Label>Review:</Form.Label>
+                <Form.Control as="textarea" value={review} onChange={(e) => setReview(e.target.value)} />
+              </Form.Group>
 
-        <label>Played:</label>
+              <Form.Group controlId="played">
+                <Form.Check type="checkbox" label="Played" checked={played} onChange={(e) => setPlayed(e.target.checked)} />
+              </Form.Group>
 
-        <input
-          type="checkbox"
-          name="played"
-          checked={played}
-          onChange={(e) => setPlayed(e.target.checked)}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+              <div className="text-center">
+                <Button variant="primary" type="submit" style={{ marginBottom: "10px", marginTop: "5px" }}>
+                  Submit
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Form>
+      </Card>
+    </Container>
   );
 
 }
