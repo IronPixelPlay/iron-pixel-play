@@ -63,10 +63,10 @@ function GameDetailsPage() {
           <Card.Body className="text-center">
             <Card.Title><h1>{game.title}</h1></Card.Title>
             <Card.Img style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }} variant="top" src={game.image} alt={game.title} />
-            <div><strong>Category:</strong> <br />{game.category}</div>
-            <div><strong>Description:</strong><br />{game.description}</div>
-            <div><strong>Instructions:</strong><br /> {game.instructions}</div>
-            <div>
+            <div style={{ marginBottom: '10px' }}><strong>Category:</strong> <br />{game.category}</div>
+            <div style={{ marginBottom: '10px' }}><strong>Description:</strong><br />{game.description}</div>
+            <div style={{ marginBottom: '10px' }}><strong>Instructions:</strong><br /> {game.instructions}</div>
+            <div style={{ marginBottom: '10px' }}>
               <strong>GitHub-Link:</strong> <a href={game.gitHubLink}>GitHub</a>
             </div>
             <div>
@@ -78,8 +78,8 @@ function GameDetailsPage() {
                 <iframe
                   src={game.demo}
                   title={game.title}
-                  width="70%"
-                  height="70%"
+                  width="90%"
+                  height="90%"
                   frameBorder="0"
                   allowFullScreen
                   style={{ position: "relative", top: 0, left: 0 }}
