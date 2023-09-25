@@ -62,7 +62,7 @@ function AddGame(props) {
   };
 
   return (
-    <Container fluid className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <Container fluid className="d-flex align-items-center justify-content-center">
       <Card bg="dark" text="white" className="card-with-spacing bright-shadow" style={{ width: '700px' }}>
         <Row className="justify-content-center">
           <Col xs={12} sm={8} md={6}>
