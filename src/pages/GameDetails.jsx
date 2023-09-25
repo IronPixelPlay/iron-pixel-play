@@ -3,11 +3,39 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { Card } from 'react-bootstrap';
 import ReviewList from "../components/ReviewList";
+import Button from 'react-bootstrap/Button';
+
 
 function GameDetailsPage() {
 
   const [game, setGame] = useState(null);
   const { gameId } = useParams();
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    const iframe = document.getElementById('gameIframe');
+    if (iframe) {
+      if (!isFullscreen) {
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          iframe.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
+
+      setIsFullscreen(!isFullscreen);
+    }
+  };
 
   const getGame = () => {
     axios
@@ -35,15 +63,30 @@ function GameDetailsPage() {
           <Card.Body className="text-center">
             <Card.Title><h1>{game.title}</h1></Card.Title>
             <Card.Img style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }} variant="top" src={game.image} alt={game.title} />
-            <Card.Text><strong>Category:</strong> <p>{game.category}</p></Card.Text>
-            <Card.Text><strong>Description:</strong> <p>{game.description}</p></Card.Text>
-            <Card.Text><strong>Instructions:</strong> <p>{game.instructions}</p></Card.Text>
-            <Card.Text>
-            <strong>Demo:</strong> <p><a href={game.demo}>Play Demo</a></p>
-            </Card.Text>
-            <Card.Text>
-              <strong>GitHub-Link:</strong><p><a href={game.gitHubLink}>GitHub</a></p>
-            </Card.Text>
+            <div><strong>Category:</strong> <br />{game.category}</div>
+            <div><strong>Description:</strong><br />{game.description}</div>
+            <div><strong>Instructions:</strong><br /> {game.instructions}</div>
+            <div>
+              <strong>GitHub-Link:</strong> <a href={game.gitHubLink}>GitHub</a>
+            </div>
+            <div>
+              <strong>Demo:</strong> <br />
+              <Button variant="primary" onClick={toggleFullscreen} style={{ marginBottom: "10px", marginTop: "10px" }}>
+                Play the Game in Fullscreen
+              </Button>
+              <div style={{ overflow: "hidden", height: "500px" }}>
+                <iframe
+                  src={game.demo}
+                  title={game.title}
+                  width="70%"
+                  height="70%"
+                  frameBorder="0"
+                  allowFullScreen
+                  style={{ position: "relative", top: 0, left: 0 }}
+                  id="gameIframe"
+                ></iframe>
+              </div>
+            </div>
           </Card.Body>
         </Card>
 
@@ -51,6 +94,7 @@ function GameDetailsPage() {
       </div>
     );
   }
+
   return <>{renderList()}</>;
 }
 
