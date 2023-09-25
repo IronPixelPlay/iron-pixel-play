@@ -68,7 +68,7 @@ function AddGame(props) {
           <Col xs={12} sm={8} md={6}>
             <h3 className="text-center">Add Game</h3>
             <Form onSubmit={handleSubmit}>
-              <div className="text-center"> {/* Wrap form elements in a text-center div */}
+              <div className="text-center">
                 <Form.Group controlId="title">
                   <Form.Label>Title:</Form.Label>
                   <Form.Control
@@ -148,7 +148,7 @@ function AddGame(props) {
                   />
                 </Form.Group>
               </div>
-              <div className="text-center"> {/* Wrap the button in a text-center div */}
+              <div className="text-center">
                 <Button variant="primary" type="submit">
                   Submit
                 </Button>
