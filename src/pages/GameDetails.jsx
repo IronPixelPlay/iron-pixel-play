@@ -67,7 +67,7 @@ function GameDetailsPage() {
             <div style={{ marginBottom: '10px' }}><strong>Description:</strong><br />{game.description}</div>
             <div style={{ marginBottom: '10px' }}><strong>Instructions:</strong><br /> {game.instructions}</div>
             <div style={{ marginBottom: '10px' }}>
-              <strong>GitHub-Link:</strong> <a href={game.gitHubLink}>GitHub</a>
+              <strong>Visit the game's GitHub repository:</strong><br /> <a href={game.gitHubLink}>GitHub Repository</a>
             </div>
             <div>
               <strong>Demo:</strong> <br />
@@ -87,10 +87,9 @@ function GameDetailsPage() {
                 ></iframe>
               </div>
             </div>
+            <ReviewList />
           </Card.Body>
         </Card>
-
-        <ReviewList />
       </div>
     );
   }
