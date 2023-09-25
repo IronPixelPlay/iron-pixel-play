@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
-import { Container, Form, Button, Row, Col, Card } from "react-bootstrap"; // Import Bootstrap components
+import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
 
 
 function AddReview(props) {

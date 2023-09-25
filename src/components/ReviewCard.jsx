@@ -5,10 +5,14 @@ import { useState, useEffect, useContext } from "react";
 import EditReview from "./EditReview";
 import { AuthContext } from "../context/auth.context";
 
+function generateStars(rating) {
+  const stars = '★'.repeat(rating);
+  return stars;
+}
+
 
 function ReviewCard(props) {
   const contextData = useContext(AuthContext)
-   
   const navigate = useNavigate()
   const {gameId} = useParams()
   const [editMode, setEditMode] = useState(false)
@@ -35,7 +39,7 @@ function ReviewCard(props) {
       <h4>Comments:</h4>
       <p>{props.review}</p>
       <h4>Rating:</h4>
-      <p>{props.rating}</p>
+      <p className="yellow-stars">{generateStars(props.rating)}</p>
       <h4>played:</h4>
       <p>{props.played}</p>
       
