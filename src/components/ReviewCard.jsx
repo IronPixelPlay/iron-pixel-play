@@ -48,13 +48,14 @@ function ReviewCard(props) {
               <strong>Played:</strong> {props.played ? 'Yes' : 'No'}
             </div>
 
-            {contextData.user._id === props.user && (
+            {contextData.user && contextData.user._id === props.user && (
               <div className="mt-3">
                 <Button variant="primary" onClick={() => setEditMode(true)}>Edit</Button>
                 <span className="mx-2"></span>
                 <Button variant="danger" onClick={deleteReview}>Delete</Button>
               </div>
             )}
+
           </>
         )}
       </Card.Body>
