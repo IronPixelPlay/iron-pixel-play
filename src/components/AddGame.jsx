@@ -106,10 +106,14 @@ function AddGame(props) {
                     style={{ textAlign: 'center' }}
                   >
                     <option value="Not Specified">Select</option>
-                    <option value="Action">Action</option>
-                    <option value="Shooting">Shooting</option>
-                    <option value="Adventure">Adventure</option>
-                    <option value="Trivia">Trivia</option>
+                    <option value="Action-Adventure">Action-Adventure</option>
+                    <option value="Shooter">Shooter</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="Quiz & Trivia">Quiz & Trivia</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Sports & Racing">Sports & Racing</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Other">Other</option>
                   </Form.Control>
                 </Form.Group>
   
