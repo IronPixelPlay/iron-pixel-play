@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { Card } from 'react-bootstrap';
 import ReviewList from "../components/ReviewList";
 import Button from 'react-bootstrap/Button';
-
+import { AuthContext } from "../context/auth.context";
+import { Link } from "react-router-dom";
+const storedToken = localStorage.getItem("authToken")
 
 function GameDetailsPage() {
 
+  const navigate = useNavigate()
   const [game, setGame] = useState(null);
   const { gameId } = useParams();
   const [isFullscreen, setIsFullscreen] = useState(false);
-
+  const { user } = useContext(AuthContext)
   const toggleFullscreen = () => {
     const iframe = document.getElementById('gameIframe');
     if (iframe) {
@@ -57,6 +60,22 @@ function GameDetailsPage() {
       return <h1>Loading</h1>;
     }
 
+    const handleDelete = () => {
+      if (user && user.id === game.creatorId) {
+        axios
+          .delete(`${import.meta.env.VITE_API_URL}/games/${gameId}`, {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          })
+          .then(() => {
+            navigate(`/games/`);
+          })
+          .catch((err) => console.log(err));
+      }
+    };
+
+    console.log("user 😊", user, "game 😊", game)
+
+
     return (
       <div>
         <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
@@ -85,6 +104,22 @@ function GameDetailsPage() {
                   style={{ position: "relative", top: 0, left: 0 }}
                   id="gameIframe"
                 ></iframe>
+              </div>
+              <div>
+                {game && user && game.user === user._id ?
+              (
+                <>
+                  <Link to={`/games/${gameId}/edit`}>
+                    <Button variant="primary">Edit</Button>
+                  </Link>
+                  <Button
+                    variant="danger"
+                    onClick={handleDelete}
+                  >
+                    Delete
+                  </Button>
+                    </>
+                  ) : <></>}
               </div>
             </div>
             <ReviewList />

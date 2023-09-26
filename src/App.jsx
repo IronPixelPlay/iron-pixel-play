@@ -10,7 +10,7 @@ import NavBar from './components/Navbar'
 import CreateGame from "./pages/CreateGame"
 import { Route, Routes } from 'react-router-dom'
 import IsPrivate from './components/IsPrivate'
-
+import EditGame from './pages/EditGame'
 function App() {
   
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/games" element={<GameListPage />} />
         <Route path="/games/:gameId" element={<GameDetailsPage />} />
+        <Route path="/games/:gameId/edit" element={<EditGame />}/>
         <Route path='/games/create' element={<IsPrivate> <CreateGame/> </IsPrivate>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
