@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
-
+import { AuthContext } from "../context/auth.context";
 
 function AddReview(props) {
+  const { isLoggedIn } = useContext(AuthContext)
   const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
@@ -48,6 +49,7 @@ function AddReview(props) {
   return (
     <Container fluid className="d-flex align-items-center justify-content-center" >
       <Card bg="dark" text="white" className="bright-shadow" style={{ width: "700px" }}>
+        {isLoggedIn ? (
         <Form onSubmit={handleSubmit}>
           <Row className="justify-content-center">
             <Col xs={12} sm={8} md={6}>
@@ -85,6 +87,11 @@ function AddReview(props) {
             </Col>
           </Row>
         </Form>
+        ) : (
+          <div className="alert alert-warning" style={{ backgroundColor: "black", color: "white" }}>
+            You must be <Link to="/login" style={{ color: "white" }}>logged in</Link> to leave a review.
+          </div>
+        )}
       </Card>
     </Container>
   );
