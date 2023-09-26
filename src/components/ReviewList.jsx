@@ -39,6 +39,7 @@ function ReviewList() {
         <h2>Average rating: {averageRating}</h2>
       </section>
 
+<hr />
 
       <AddReview refreshReviews={getAllReviews}/>
       {reviews.map((review)=>{
