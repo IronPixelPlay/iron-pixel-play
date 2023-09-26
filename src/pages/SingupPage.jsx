@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import authService from "../services/auth.service"
+import authService from "../services/auth.service";
+import { Container, Form, Button, Card, Row, Col } from "react-bootstrap";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -14,60 +15,94 @@ function SignupPage(props) {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
-
   const handleSignupSubmit = (e) => {
-      e.preventDefault();
-      const requestBody = { email, password, name };
+    e.preventDefault();
+    const requestBody = { email, password, name };
 
-      authService.signup(requestBody)
-          .then((response) => {
-              navigate('/login');
-          })
-          .catch((error) => {
-              const errorDescription = error.response.data.message;
-              setErrorMessage(errorDescription);
-          })
+    authService
+      .signup(requestBody)
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
 
-
   return (
-      <div>
-          <h1>Sign Up</h1>
-
-          <form onSubmit={handleSignupSubmit}>
-              <label>Email:</label>
-              <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={handleEmail}
-              />
-
-              <label>Password:</label>
-              <input
-                  type="password"
-                  name="password"
-                  value={password}
-                  onChange={handlePassword}
-              />
-
-              <label>Name:</label>
-              <input
+    <Container
+      fluid
+      className="d-flex align-items-center justify-content-center"
+    >
+      <Card
+        bg="dark"
+        text="white"
+        className="card-with-spacing bright-shadow"
+        style={{ width: "700px" }}
+      >
+        <Row className="justify-content-center">
+          <Col xs={12} sm={8} md={6}>
+            <h3 className="text-center" style={{ marginTop: "10px" }}>
+              Sign Up
+            </h3>
+            <Form.Group controlId="name">
+                <Form.Label>Name:</Form.Label>
+                <Form.Control
                   type="text"
                   name="name"
                   value={name}
                   onChange={handleName}
-              />
+                  required
+                />
+              </Form.Group>
 
-              <button type="submit">Sign Up</button>
-          </form>
+            <Form onSubmit={handleSignupSubmit}>
+              <Form.Group controlId="email">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={handleEmail}
+                  required
+                />
+              </Form.Group>
 
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+              <Form.Group controlId="password">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePassword}
+                  required
+                />
+              </Form.Group>
 
-          <p>Already have account?</p>
-          <Link to={"/login"}> Login</Link>
-      </div>
-  )
+              <div className="text-center">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  style={{ marginBottom: "5px", marginTop: "5px" }}
+                >
+                  Sign Up
+                </Button>
+              </div>
+            </Form>
+
+            {errorMessage && (
+              <p className="text-danger text-center">{errorMessage}</p>
+            )}
+
+            <p className="text-center">
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </Col>
+        </Row>
+      </Card>
+    </Container>
+  );
 }
 
-  export default SignupPage;
+export default SignupPage;

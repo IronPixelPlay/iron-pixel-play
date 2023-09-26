@@ -24,53 +24,24 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 8px 16px rgba(252, 248, 248, 0.1), 0px 12px 24px rgba(252, 248, 248, 0.1);
 }
 
-.navbar {
-  background-color: #333;
-  box-shadow: 0 2px 4px rgba(252, 248, 248, 0.1);
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .navbar a {
   color: white !important;
   text-decoration: none;
   margin: 0 20px;
 }
 
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
 .navbar-text {
   margin-right: 20px;
-}
-
-.navbar-center {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .navbar a:hover {
   color: #43c7c2 !important;
 }
 
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-  /* Add more responsive styles here */
+.yellow-stars {
+  color: rgb(255, 189, 66);
 }
 
-/* Media query for screens between 768px and 992px (e.g., tablets) */
-@media (min-width: 769px) and (max-width: 992px) {
-  /* Add responsive styles for tablets */
-}
-
-/* Media query for screens larger than 992px (e.g., desktops) */
-@media (min-width: 993px) {
-  /* Add responsive styles for desktops */
+.navbar-toggler-icon {
+  background-color: white;
 }

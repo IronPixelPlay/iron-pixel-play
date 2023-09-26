@@ -62,13 +62,13 @@ function AddGame(props) {
   };
 
   return (
-    <Container fluid className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+    <Container fluid className="d-flex align-items-center justify-content-center">
       <Card bg="dark" text="white" className="card-with-spacing bright-shadow" style={{ width: '700px' }}>
         <Row className="justify-content-center">
           <Col xs={12} sm={8} md={6}>
             <h3 className="text-center">Add Game</h3>
             <Form onSubmit={handleSubmit}>
-              <div className="text-center"> {/* Wrap form elements in a text-center div */}
+              <div className="text-center">
                 <Form.Group controlId="title">
                   <Form.Label>Title:</Form.Label>
                   <Form.Control
@@ -148,8 +148,8 @@ function AddGame(props) {
                   />
                 </Form.Group>
               </div>
-              <div className="text-center"> {/* Wrap the button in a text-center div */}
-                <Button variant="primary" type="submit">
+              <div className="text-center">
+              <Button variant="primary" type="submit" style={{ marginBottom: "5px", marginTop: "5px" }}>
                   Submit
                 </Button>
               </div>
