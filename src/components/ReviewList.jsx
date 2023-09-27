@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import AddReview from "./AddReview";
+import { PacmanLoader } from "react-spinners";
 
 const averageStarRating = (averageRating) => {
   return '★'.repeat(Math.round(averageRating));
@@ -36,7 +37,13 @@ function ReviewList() {
   const averageRatingStars = averageStarRating(averageRating);
 
   return reviews === null ? (
-    <h1>Loading</h1>
+    <div className="loader-container">
+      <PacmanLoader
+        color="#05ffe9"
+        size={100}
+      />
+    </div>
+
   ) : (
     <div>
       <section>

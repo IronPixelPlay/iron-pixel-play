@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row"
 
 import AddGame from "../components/AddGame";
 import GameCard from "../components/GameCard";
+import { PacmanLoader } from "react-spinners";
 
 
 function GameListPage() {
@@ -26,7 +27,14 @@ function GameListPage() {
 
   const renderList = () => {
     if (games === null) {
-      return <h1>Loading</h1>;
+      return (
+        <div className="loader-container">
+          <PacmanLoader
+            color="#05ffe9"
+            size={100}
+          />
+        </div>
+      );
     }
 
     return (
@@ -41,7 +49,7 @@ function GameListPage() {
   };
 
   return (
-    <div style={{ marginTop: "20px" }}> 
+    <div style={{ marginTop: "20px" }}>
       {renderList()}
     </div>
   );

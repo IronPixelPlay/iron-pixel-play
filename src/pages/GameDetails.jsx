@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 const storedToken = localStorage.getItem("authToken")
+import { PacmanLoader } from "react-spinners";
 
 function GameDetailsPage() {
 
@@ -57,7 +58,14 @@ function GameDetailsPage() {
 
   const renderList = () => {
     if (game === null) {
-      return <h1>Loading</h1>;
+      return (
+        <div className="loader-container">
+          <PacmanLoader
+            color="#05ffe9"
+            size={100}
+          />
+        </div>
+      );
     }
 
     const handleDelete = () => {
@@ -129,7 +137,7 @@ function GameDetailsPage() {
         </Card>
       </div>
     );
-    
+
   }
 
   return <>{renderList()}</>;
