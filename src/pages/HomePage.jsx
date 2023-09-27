@@ -17,7 +17,7 @@ function HomePage() {
   return (
     <>
       <h1 style= {{marginTop: "20px"}}>Welcome to IronPixelPlay</h1>
-      <h6 style={{ color: "white" }}>Discover a hub exclusively for Ironhack's web development bootcampers! This platform is your canvas to proudly display your Module 1 game and delve into the world of your fellow Ironhackers' creations. When you upload your game, categorize it into genres such as action-adventure, puzzle, and many more. Let's come together to celebrate your coding journey and explore the universe of gaming!</h6>
+      <p style={{ color: "white", fontWeight: "bold"  }}>Discover a hub exclusively for Ironhack's web development bootcampers! This platform is your canvas to proudly display your Module 1 game and delve into the world of your fellow Ironhackers' creations. When you upload your game, categorize it into genres such as action-adventure, puzzle, and many more. Let's come together to celebrate your coding journey and explore the universe of gaming!</p>
       <Carousel fade style= {{marginTop: "30px"}}>
 
         <Carousel.Item style={{ maxHeight: '80vh' }}>
