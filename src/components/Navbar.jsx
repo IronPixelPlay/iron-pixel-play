@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Navbar, Nav, Button, Container, NavDropdown } from 'react-bootstrap';
 
-function NavBar() {
+function NavbarComponent() {
   const {
     isLoggedIn,
     user,
@@ -94,4 +94,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavbarComponent;

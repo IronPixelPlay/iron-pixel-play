@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import SignupPage from './pages/SingupPage'
-import NavBar from './components/NavBar'
+import NavbarComponent from './components/Navbar'
 import CreateGame from "./pages/CreateGame"
 import { Route, Routes } from 'react-router-dom'
 import IsPrivate from './components/IsPrivate'
@@ -15,7 +15,7 @@ function App() {
   
   return (
     <div>
-      <NavBar />
+      <NavbarComponent />
 
       <Routes>
         <Route path="/" element={<HomePage />} />

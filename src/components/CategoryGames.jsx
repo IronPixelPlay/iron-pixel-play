@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import GameCard from "./GameCard"
 import { Row } from "react-bootstrap"
+import { PacmanLoader } from "react-spinners";
 
 function CategoryGames() {
 
@@ -25,20 +26,21 @@ function CategoryGames() {
     }, [])
 
     return sortedGames === null ? (
-        <h1>No games to display</h1>
+      <div className="loader-container">
+        <PacmanLoader color="#05ffe9" size={100} />
+      </div>
     ) : (
-        <Row>
-
+      <Row>
         <h1>{category}</h1>
-        {sortedGames.map((game, idx)=>{
-            return (
-                <div key={`sort-${idx}`} className="col-md-3">
-                <GameCard {...game} />
-                </div>
-            )
+        {sortedGames.map((game, idx) => {
+          return (
+            <div key={`sort-${idx}`} className="col-md-3">
+              <GameCard {...game} />
+            </div>
+          );
         })}
-        </Row>
-    )
+      </Row>
+    );
      
  }
  
