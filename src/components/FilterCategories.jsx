@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import { Row } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 function FilterCategories(props) {
     console.log(props);
@@ -40,15 +41,18 @@ function FilterCategories(props) {
     <div>
       <div className="buttons-container">
         {categories.map((category, idx) => (
-          <button
+          <Button
             onClick={() => handleFilterButtonClick(category)}
-            className={`button ${
-              selectedFilters?.includes(category) ? "active" : ""
-            }`}
+            variant="outline-info"
+            size="lg"
+            
+            // {`button ${
+            //   selectedFilters?.includes(category) ? "active" : ""
+            // }`}
             key={`filters-${idx}`}
           >
             {category}
-          </button>
+          </Button>
         ))}
       </div>
 
