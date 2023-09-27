@@ -22,7 +22,7 @@ function FilterCategories(props) {
 
   const handleFilterButtonClick = (selectedCategory) => {
     if (selectedFilters.includes(selectedCategory)) {
-      let filters = selectedFilters.filter((el) => el !== selectedCategory);
+      let filters = selectedFilters.filter((category) => category !== selectedCategory);
       setSelectedFilters(filters);
     } else {
       setSelectedFilters([...selectedFilters, selectedCategory]);
@@ -48,8 +48,13 @@ function FilterCategories(props) {
   };
 
   const reset = () => {
-    return document.querySelector(".active").classList.remove("active");
+    const selectedCategories = document.querySelectorAll('.active')
+    selectedCategories.forEach((selectedCategory)=>{
+      selectedCategory.classList.remove('active')
+      setFilteredGames(games)
+    })
   };
+
 
   return (
     <div>

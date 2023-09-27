@@ -17,8 +17,6 @@ function ProfilePage() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log(response.data)
-        console.log("profileInfo", response.data.user.name)
         setProfileData(response.data);
       })
       .catch((error) => {

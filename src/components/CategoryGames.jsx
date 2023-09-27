@@ -14,7 +14,6 @@ function CategoryGames() {
 
     axios.get(`${import.meta.env.VITE_API_URL}/games/sort/${category}`)
     .then((response)=>{
-        console.log(response.data);
         setSortedGames(response.data)
     })
     .catch((error) => {
