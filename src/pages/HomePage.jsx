@@ -13,12 +13,13 @@ import strategy from "../images/strategy-game.png"
 
 
 function HomePage() {
+    
   return (
     <Carousel fade>
 
       <Carousel.Item>
       <Link to={`/games/sort/Other`}>
-        <img src={other} alt="other" /> 
+        <img src={other} style={{ width: '100vw', height: '80vh' }} alt='other'/> 
         <Carousel.Caption>
           <h3>Other</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -28,7 +29,7 @@ function HomePage() {
 
       <Carousel.Item>
       <Link to={`/games/sort/Action&Adventure`}>
-      <img src={action}alt="action" />
+      <img src={action} style={{ width: '100vw', height: '80vh' }} alt="action"/>
         <Carousel.Caption>
           <h3>Action & Adventure</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -38,7 +39,7 @@ function HomePage() {
 
       <Carousel.Item>
       <Link to={`/games/sort/Fighting`}>
-      <img src={fight} alt="fight" />
+      <img src={fight} style={{ width: '100vw', height: '80vh' }} alt="fight" />
         <Carousel.Caption>
           <h3>Fighting</h3>
           <p>
@@ -50,7 +51,7 @@ function HomePage() {
 
       <Carousel.Item>
       <Link to={`/games/sort/Puzzle`}>
-      <img src={puzzle} alt="puzzle" />
+      <img src={puzzle} style={{ width: '100vw', height: '80vh' }} alt="puzzle" />
         <Carousel.Caption>
           <h3>Puzzle</h3>
           <p>
@@ -62,7 +63,7 @@ function HomePage() {
 
       <Carousel.Item>
       <Link to={`/games/sort/Quiz&Trivia`}>
-      <img src={trivia} alt="trivia" />
+      <img src={trivia} style={{ width: '100vw', height: '80vh' }} alt="trivia" />
         <Carousel.Caption>
           <h3>Quiz & Trivia</h3>
           <p>
@@ -74,7 +75,7 @@ function HomePage() {
 
       <Carousel.Item>
       <Link to={`/games/sort/Shooter`}>
-      <img src={shooter} alt="shooter" />
+      <img src={shooter} style={{ width: '100vw', height: '80vh' }} alt="shooter" />
         <Carousel.Caption>
           <h3>Shooter</h3>
           <p>
@@ -86,7 +87,7 @@ function HomePage() {
 
       <Carousel.Item>
       <Link to={`/games/sort/Sports`}>
-      <img src={sports} alt="sports" />
+      <img src={sports} style={{ width: '100vw', height: '80vh' }} alt="sports" />
         <Carousel.Caption>
           <h3>Sports & Racing</h3>
           <p>
@@ -98,7 +99,7 @@ function HomePage() {
 
       <Carousel.Item>
         <Link to={`/games/sort/Strategy`}>
-      <img src={strategy} alt="strategy" />
+      <img src={strategy} style={{ width: '100vw', height: '80vh' }} alt="strategy" />
         <Carousel.Caption>
           <h3>Strategy</h3>
           <p>
