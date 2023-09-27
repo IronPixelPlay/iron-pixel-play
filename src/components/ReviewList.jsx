@@ -48,7 +48,7 @@ function ReviewList() {
     <div>
       <section>
         <h2>Played by {playedSum}</h2>
-        <h2>Average rating: <span className="yellow-stars">{averageRatingStars}</span></h2>
+        <h2>Average rating: <span className="yellow-stars">{averageRatingStars ? averageRatingStars : 'No reviews yet'}</span></h2>
       </section>
 
       <AddReview refreshReviews={getAllReviews} />
