@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import { Row } from "react-bootstrap";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import FilterButton from "./FilterButton";
 
 function FilterCategories(props) {
-    console.log(props);
-    let games = props.gamesList
-    console.log(games);
+  let games = props.gamesList;
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredGames, setFilteredGames] = useState(games);
 
-  let categories = ["Action-Adventure", "Shooter", "Fighting", "Quiz&Trivia", "Other", "Strategy", "Sports&Racing", "Puzzle", "Not-Specified"];
+  let categories = [
+    "Action-Adventure",
+    "Shooter",
+    "Fighting",
+    "Quiz&Trivia",
+    "Strategy",
+    "Sports&Racing",
+    "Puzzle",
+    "Other",
+  ];
 
   const handleFilterButtonClick = (selectedCategory) => {
     if (selectedFilters.includes(selectedCategory)) {
@@ -28,7 +36,9 @@ function FilterCategories(props) {
   const filterGames = () => {
     if (selectedFilters.length > 0) {
       let filteredGames = selectedFilters.map((selectedCategory) => {
-        let selection = games.filter((game) => game.category === selectedCategory);
+        let selection = games.filter(
+          (game) => game.category === selectedCategory
+        );
         return selection;
       });
       setFilteredGames(filteredGames.flat());
@@ -37,24 +47,25 @@ function FilterCategories(props) {
     }
   };
 
+  const reset = () => {
+    return document.querySelector(".active").classList.remove("active");
+  };
+
   return (
     <div>
-      <div className="buttons-container">
+      <Row className="align-items-center">
         {categories.map((category, idx) => (
-          <Button
-            onClick={() => handleFilterButtonClick(category)}
-            variant="outline-info"
-            size="lg"
-            
-            // {`button ${
-            //   selectedFilters?.includes(category) ? "active" : ""
-            // }`}
-            key={`filters-${idx}`}
-          >
-            {category}
-          </Button>
+          <div key={`filters-${idx}`} className="col" xs="auto">
+            <FilterButton
+              filterCategories={handleFilterButtonClick}
+              category={category}
+            />
+          </div>
         ))}
-      </div>
+      </Row>
+      <Button className="danger" onClick={reset}>
+        Reset
+      </Button>
 
       <div>
         <Row>
@@ -70,4 +81,4 @@ function FilterCategories(props) {
   );
 }
 
-export default FilterCategories
+export default FilterCategories;
