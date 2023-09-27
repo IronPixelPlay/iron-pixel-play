@@ -11,6 +11,7 @@ import CreateGame from "./pages/CreateGame"
 import { Route, Routes } from 'react-router-dom'
 import IsPrivate from './components/IsPrivate'
 import EditGame from './pages/EditGame'
+import SortGames from './pages/SortGames'
 function App() {
   
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/games/:gameId" element={<GameDetailsPage />} />
         <Route path="/games/:gameId/edit" element={<EditGame />}/>
         <Route path='/games/create' element={<IsPrivate> <CreateGame/> </IsPrivate>} />
+        <Route path='/games/sort/:category' element={<SortGames/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/user" element={<ProfilePage />} />
