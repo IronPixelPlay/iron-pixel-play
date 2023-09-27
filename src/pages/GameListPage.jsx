@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Row from "react-bootstrap/Row"
 
-import AddGame from "../components/AddGame";
-import GameCard from "../components/GameCard";
 import { PacmanLoader } from "react-spinners";
 import FilterCategories from "../components/FilterCategories"
 
