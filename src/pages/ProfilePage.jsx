@@ -86,6 +86,29 @@ function ProfilePage() {
                 ))}
               </Card.Body>
             </Card>
+
+            <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+              <Card.Body>
+                <h2>Your recently played games:</h2>
+                {profileData.reviews.map((userReview) => ( userReview.played === true ? <div key={userReview.title}>
+                    <Link to={`/games/${userReview.game}`}>
+                      <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+                        <Card.Body>
+                        <Card.Img
+                          style={{ width: '100%', height: '170px', objectFit: 'cover' }}
+                          variant="top"
+                          src={userReview.game.image || defaultImage}
+                        />
+                          <Card.Title>{userReview.title}</Card.Title>
+                        </Card.Body>
+                      </Card>
+                    </Link>
+                  </div> : <></>
+                ))}
+              </Card.Body>
+            </Card>
+
+
           </Col>
         </Row>
       </Container>
