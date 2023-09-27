@@ -106,27 +106,30 @@ function GameDetailsPage() {
                 ></iframe>
               </div>
               <div>
-                {game && user && game.user === user._id ?
-              (
-                <>
-                  <Link to={`/games/${gameId}/edit`}>
-                    <Button variant="primary">Edit</Button>
-                  </Link>
-                  <Button
-                    variant="danger"
-                    onClick={handleDelete}
-                  >
-                    Delete
-                  </Button>
-                    </>
-                  ) : <></>}
+                {game && user && game.user === user._id ? (
+                  <>
+                    <Link to={`/games/${gameId}/edit`} style={{ marginRight: '20px' }}>
+                      <Button variant="primary" style={{ marginTop: '-60px' }}>Edit Game</Button>
+                    </Link>
+                    <Button
+                      variant="danger"
+                      onClick={handleDelete}
+                      style={{ marginTop: '-60px' }}
+                    >
+                      Delete Game
+                    </Button>
+                  </>
+                ) : <></>}
               </div>
             </div>
-            <ReviewList />
+            <div style={{ marginTop: '30px' }}>
+              <ReviewList />
+            </div>
           </Card.Body>
         </Card>
       </div>
     );
+    
   }
 
   return <>{renderList()}</>;
