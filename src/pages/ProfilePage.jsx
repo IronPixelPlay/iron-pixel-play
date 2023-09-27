@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Card, Container, Row, Col } from "react-bootstrap";
+import { PacmanLoader } from "react-spinners";
 
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState(null)
 
-  const storedToken = localStorage.getItem('authToken'); 
+  const storedToken = localStorage.getItem('authToken');
 
   const getProfileData = () => {
     axios
@@ -30,13 +31,21 @@ function ProfilePage() {
 
   const renderUser = () => {
     if (profileData === null) {
-      return <h1>Loading</h1>;
+      return (
+        <div className="loader-container">
+          <PacmanLoader
+            color="#05ffe9"
+            size={100}
+          />
+        </div>
+      )
+
     }
 
     return (
       <Container>
-        <h1>Hi {profileData.user.name}</h1>
-  
+        <h1>Hi {profileData.user.name}!</h1>
+
         <Row>
           <Col>
             <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
