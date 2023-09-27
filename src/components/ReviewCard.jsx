@@ -42,7 +42,7 @@ function ReviewCard(props) {
               <strong>Review:</strong> {props.review}
             </div>
             <div style={{ marginBottom: '10px' }}>
-              <strong>Rating:</strong> <span className="yellow-stars">{generateStars(props.rating)}</span>
+              <strong>Rating:</strong> <span className="yellow-stars">{generateStars(props.rating ? props.rating : 1)}</span>
             </div>
             <div style={{ marginBottom: '10px' }}>
               <strong>Played:</strong> {props.played ? 'Yes' : 'No'}
