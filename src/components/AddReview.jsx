@@ -9,7 +9,7 @@ function AddReview(props) {
   const { isLoggedIn } = useContext(AuthContext)
   const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [played, setPlayed] = useState(false);
 
   const {gameId} = useParams()
@@ -17,6 +17,7 @@ function AddReview(props) {
   const handleRating = (rate) => {
     setRating(rate);
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,13 +38,16 @@ function AddReview(props) {
       { headers: { Authorization: `Bearer ${storedToken}`} }
       )
       .then((response) => {
-        setTitle("");
-        setReview("");
-        setRating(0), 
-        setPlayed(false);
+        
         props.refreshReviews()
+        
       })
       .catch((error) => console.log(error));
+      
+      setTitle("");
+      setReview("");
+      handleRating(1); 
+      setPlayed(false);
   };
 
   return (
@@ -62,10 +66,10 @@ function AddReview(props) {
               <Form.Group controlId="rating" style={{ marginBottom: "10px" }}>
                 <Form.Label>Rating:</Form.Label>
                 <Rating
-                  ratingValue={rating}
+                  initialValue={rating}
                   onClick={handleRating}
                   onPointerEnter={() => {}}
-                  onPointerLeave={() => {}}
+                  onPointerLeave={()=>{}}
                   onPointerMove={() => {}}
                 />
               </Form.Group>

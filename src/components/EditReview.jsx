@@ -69,7 +69,7 @@ function EditReview(props) {
               <Form.Group controlId="rating" style={{ marginBottom: "10px" }}>
                 <Form.Label>Rating:</Form.Label>
                 <Rating
-                  ratingValue={rating}
+                  initialValue={rating}
                   onClick={handleRating}
                   onPointerEnter={() => {}}
                   onPointerLeave={() => {}}
