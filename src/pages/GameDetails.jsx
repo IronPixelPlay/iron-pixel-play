@@ -82,8 +82,6 @@ function GameDetailsPage() {
       }
     };
 
-    console.log("user 😊", user, "game 😊", game)
-
     const imageUrl = game.image || defaultImage;
 
     return (

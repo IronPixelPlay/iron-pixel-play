@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { PacmanLoader } from "react-spinners";
+import defaultImage from "../images/pacman-6450.gif";
 
 
 function ProfilePage() {
@@ -58,7 +59,7 @@ function ProfilePage() {
                         <Card.Img
                           style={{ width: '100%', height: '170px', objectFit: 'cover' }}
                           variant="top"
-                          src={userGame.image}
+                          src={userGame.image || defaultImage}
                         />
                         <Card.Body>
                           <Card.Title>{userGame.title}</Card.Title>
