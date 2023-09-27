@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import GameDetailsPage from './pages/GameDetails'
 import GameListPage from './pages/GameListPage'
@@ -6,7 +5,7 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import SignupPage from './pages/SingupPage'
-import NavBar from './components/Navbar'
+import NavBar from './components/NavBar'
 import CreateGame from "./pages/CreateGame"
 import { Route, Routes } from 'react-router-dom'
 import IsPrivate from './components/IsPrivate'
