@@ -8,6 +8,7 @@ import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 const storedToken = localStorage.getItem("authToken")
 import { PacmanLoader } from "react-spinners";
+import defaultImage from "../images/pacman-6450.gif";
 
 function GameDetailsPage() {
 
@@ -83,13 +84,14 @@ function GameDetailsPage() {
 
     console.log("user 😊", user, "game 😊", game)
 
+    const imageUrl = game.image || defaultImage;
 
     return (
       <div>
         <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
           <Card.Body className="text-center">
             <Card.Title><h1>{game.title}</h1></Card.Title>
-            <Card.Img style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }} variant="top" src={game.image} alt={game.title} />
+            <Card.Img style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }} variant="top" src={imageUrl} alt={game.title} />
             <div style={{ marginBottom: '10px' }}><strong>Category:</strong> <br />{game.category}</div>
             <div style={{ marginBottom: '10px' }}><strong>Description:</strong><br />{game.description}</div>
             <div style={{ marginBottom: '10px' }}><strong>Instructions:</strong><br /> {game.instructions}</div>

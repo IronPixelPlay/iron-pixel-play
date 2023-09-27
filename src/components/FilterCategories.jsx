@@ -10,7 +10,7 @@ function FilterCategories(props) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [filteredGames, setFilteredGames] = useState(games);
 
-  let categories = ["Action-Adventure", "Shooter", "Fighting", "Quiz & Trivia", "Other", "Strategy", "Sports & Racing", "Puzzle", "Not Specified"];
+  let categories = ["Action-Adventure", "Shooter", "Fighting", "Quiz&Trivia", "Other", "Strategy", "Sports&Racing", "Puzzle", "Not-Specified"];
 
   const handleFilterButtonClick = (selectedCategory) => {
     if (selectedFilters.includes(selectedCategory)) {

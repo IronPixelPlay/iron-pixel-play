@@ -105,13 +105,13 @@ function AddGame(props) {
                     onChange={(e) => setCategory(e.target.value)}
                     style={{ textAlign: 'center' }}
                   >
-                    <option value="Not Specified">Select</option>
+                    <option value="Not-Specified">Select</option>
                     <option value="Action-Adventure">Action-Adventure</option>
                     <option value="Shooter">Shooter</option>
                     <option value="Fighting">Fighting</option>
-                    <option value="Quiz & Trivia">Quiz & Trivia</option>
+                    <option value="Quiz&Trivia">Quiz & Trivia</option>
                     <option value="Strategy">Strategy</option>
-                    <option value="Sports & Racing">Sports & Racing</option>
+                    <option value="Sports&Racing">Sports & Racing</option>
                     <option value="Puzzle">Puzzle</option>
                     <option value="Other">Other</option>
                   </Form.Control>
