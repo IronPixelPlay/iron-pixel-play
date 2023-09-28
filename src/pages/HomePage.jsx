@@ -9,6 +9,7 @@ import trivia from "../images/quiz-trivia-game.png"
 import shooter from "../images/shooter-game.png"
 import sports from "../images/sports-racing-game2.png"
 import strategy from "../images/strategy-game.png"
+import image from "../images/pixel.png"
 
 
 
@@ -16,9 +17,11 @@ function HomePage() {
 
   return (
     <>
-      <h1 style= {{marginTop: "20px"}}>Welcome to IronPixelPlay</h1>
-      <p style={{ color: "white", fontWeight: "bold"  }}>Discover a hub exclusively for Ironhack's web development bootcampers! This platform is your canvas to proudly display your Module 1 game and delve into the world of your fellow Ironhackers' creations. When you upload your game, categorize it into genres such as action-adventure, puzzle, and many more. Let's come together to celebrate your coding journey and explore the universe of gaming!</p>
-      <Carousel fade style= {{marginTop: "30px"}}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <h1 style={{ marginTop: "20px" }}>Welcome to IronPixelPlay <img src={image} alt="IronPixelPlay" style={{ width: "1em", height: "1em", marginLeft: "5px" }} /></h1>
+      </div>
+      <p style={{ color: "white", fontWeight: "bold" }}>Discover a hub exclusively for Ironhack's web development bootcampers! This platform is your canvas to proudly display your Module 1 game and delve into the world of your fellow Ironhackers' creations. When you upload your game, categorize it into genres such as action-adventure, puzzle, and many more. Let's come together to celebrate your coding journey and explore the universe of gaming!</p>
+      <Carousel fade style={{ marginTop: "30px" }}>
 
         <Carousel.Item style={{ maxHeight: '80vh' }}>
           <Link to={`/games/sort/Other`}>
