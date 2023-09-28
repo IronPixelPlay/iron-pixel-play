@@ -36,29 +36,29 @@ function NavbarComponent(props) {
               id="basic-nav-dropdown"
               className="custom-dropdown"
             >
-              <NavDropdown.Item href="/games">All Games</NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Action-Adventure">
+              <NavDropdown.Item as={NavLink} to="/games">All Games</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/games/sort/Action-Adventure">
                 Action-Adventure
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Shooter">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Shooter">
                 Shooter
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Fighting">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Fighting">
                 Fighting
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Quiz&Trivia">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Quiz&Trivia">
                 Quiz & Trivia
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Strategy">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Strategy">
                 Strategy
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Sports&Racing">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Sports&Racing">
                 Sports & Racing
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Puzzle">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Puzzle">
                 Puzzle
               </NavDropdown.Item>
-              <NavDropdown.Item href="/games/sort/Other">
+              <NavDropdown.Item as={NavLink} to="/games/sort/Other">
                 Other
               </NavDropdown.Item>
             </NavDropdown>
@@ -77,7 +77,7 @@ function NavbarComponent(props) {
           </Nav>
         </Navbar.Collapse>
 
-        
+
         <div className="navbar-right d-none d-lg-block">
           {isLoggedIn ? (
             <>
