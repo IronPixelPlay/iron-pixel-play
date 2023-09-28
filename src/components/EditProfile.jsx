@@ -82,12 +82,13 @@ function EditProfile(props) {
                   Edit Profile
                 </h3>
                 <Form.Group controlId="name">
-                  <Form.Label>Name:</Form.Label>
+                  <Form.Label>Name*:</Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
@@ -101,22 +102,24 @@ function EditProfile(props) {
                 </Form.Group>
 
                 <Form.Group controlId="email">
-                  <Form.Label>Email:</Form.Label>
+                  <Form.Label>Email*:</Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
                 <Form.Group controlId="password">
-                  <Form.Label>Password:</Form.Label>
+                  <Form.Label>Password*:</Form.Label>
                   <Form.Control
                     type="password"
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
