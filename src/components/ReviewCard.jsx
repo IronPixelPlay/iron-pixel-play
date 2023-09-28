@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-
+import { useState, useContext } from "react";
 import EditReview from "./EditReview";
 import { AuthContext } from "../context/auth.context";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Image } from "react-bootstrap";
+import defaultImage from "../images/pacman-6450.gif";
 
 function generateStars(rating) {
   const stars = '★'.repeat(rating);
@@ -37,6 +37,7 @@ function ReviewCard(props) {
           <EditReview {...props} setEditMode={setEditMode} />
         ) : (
           <>
+            <div style={{ marginBottom: '10px' }}><strong>Created by:</strong> <br /><Link to={`/user/${props.user}`}><Image style={{ width: "3em", height: "3em", borderRadius: "50%" }} src={props && props.owner || defaultImage} alt={props && props.owner} /></Link></div>
             <Card.Title>{props.title}</Card.Title>
             <div style={{ marginBottom: '10px' }}>
               <strong>Review:</strong> {props.review}
