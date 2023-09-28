@@ -11,6 +11,7 @@ function EditProfile(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
+  const [upload, setUpload] = useState(false)
 
   const navigate = useNavigate();
 
@@ -48,12 +49,18 @@ function EditProfile(props) {
 
     uploadData.append("image", e.target.files[0]);
 
+    setUpload(true)
+
     service
       .uploadImage(uploadData)
       .then((response) => {
         setImage(response.fileUrl);
+        setUpload(false)
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+      .catch((err) => {
+        setUpload(false)
+        console.log("Error while uploading the file: ", err);
+      })
   };
 
   return (
@@ -117,7 +124,7 @@ function EditProfile(props) {
                   <Button
                     variant="primary"
                     type="submit"
-                    style={{ marginBottom: "5px", marginTop: "5px" }}
+                    style={{ marginBottom: "5px", marginTop: "5px", visibility: upload ? "hidden" : "visible" }}
                   >
                     Save
                   </Button>
