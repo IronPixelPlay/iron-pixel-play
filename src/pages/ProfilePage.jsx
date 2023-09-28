@@ -95,7 +95,7 @@ function ProfilePage() {
                 <h2>Your recent reviews</h2>
                 {profileData.reviews.map((userReview) => (
                   <div key={userReview.title}>
-                    <Link to={`/games/${userReview.game}`}>
+                    <Link to={`/games/${userReview.game._id}`}>
                       <Card
                         bg="dark"
                         text="white"
