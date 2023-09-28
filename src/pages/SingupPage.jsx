@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
+import service from "../services/file-upload.service";
 import { Container, Form, Button, Card, Row, Col } from "react-bootstrap";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [image, setImage] = useState("")
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
+
+  const handleFileUpload = (e) => {
+
+    const uploadData = new FormData();
+
+    uploadData.append("image", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        setImage(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -17,7 +33,7 @@ function SignupPage(props) {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, image };
 
     authService
       .signup(requestBody)
@@ -56,6 +72,14 @@ function SignupPage(props) {
                   required
                 />
               </Form.Group>
+
+              <Form.Group controlId="image">
+                  <Form.Label>Profile Picture:</Form.Label>
+                  <Form.Control
+                    type="file"
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                </Form.Group>
 
             <Form onSubmit={handleSignupSubmit}>
               <Form.Group controlId="email">

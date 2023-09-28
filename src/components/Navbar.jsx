@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { Navbar, Nav, Button, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Button, Container, NavDropdown, Image } from 'react-bootstrap';
 
 function NavbarComponent() {
   const {
@@ -46,7 +46,7 @@ function NavbarComponent() {
             {isLoggedIn ? (
               <>
                 <span className="navbar-text d-lg-none" style={{ color: 'white' }}>
-                  Hi {user && user.name}!
+                Hi {user && user.name}! <Image style={{ width: "1em", hight: "1em" }} src={user && user.image} roundedCircle />
                 </span>
                 <Button variant="danger" onClick={logOutUser} className="d-lg-none">
                   Logout
@@ -70,7 +70,7 @@ function NavbarComponent() {
           {isLoggedIn ? (
             <>
               <span className="navbar-text" style={{ color: 'white' }}>
-                Hi {user && user.name}!
+              Hi {user && user.name}! <Image style={{ width: "2em", hight: "2em" }} src={user && user.image} roundedCircle />
               </span>
               <Button variant="danger" onClick={logOutUser}>
                 Logout
