@@ -16,6 +16,7 @@ function EditGame({ storedToken }) {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate();
     const { gameId } = useParams();
+    const [upload, setUpload] = useState(false)
 
 
 
@@ -46,13 +47,20 @@ function EditGame({ storedToken }) {
 
         uploadData.append("image", e.target.files[0]);
 
+        setUpload(true)
+
         service
             .uploadImage(uploadData)
             .then((response) => {
                 setImage(response.fileUrl);
+                setUpload(false)
             })
-            .catch((err) => console.log("Error while uploading the file: ", err));
+            .catch((err) => {
+                setUpload(false)
+                console.log("Error while uploading the file: ", err);
+            })
     };
+
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -170,7 +178,7 @@ function EditGame({ storedToken }) {
                                 </Form.Group>
                             </div>
                             <div className="text-center">
-                                <Button variant="primary" type="submit" style={{ marginBottom: "5px", marginTop: "5px" }}>
+                                <Button variant="primary" type="submit" style={{ marginBottom: "5px", marginTop: "5px", visibility: upload ? "hidden" : "visible" }}>
                                     Update
                                 </Button>
                             </div>
