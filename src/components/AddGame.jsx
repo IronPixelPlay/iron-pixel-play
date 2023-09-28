@@ -123,13 +123,13 @@ function AddGame(props) {
                     as="textarea"
                     value={description}
                     onChange={(e) => {
-                      if (e.target.value.length <= 60) {
+                      if (e.target.value.length <= 100) {
                         setDescription(e.target.value);
                       }
                     }}
                   />
                   <Form.Label style={{ color: 'white', fontSize: '14px' }}>
-                    {60 - description.length} characters remaining
+                    {100 - description.length} characters remaining
                   </Form.Label>
                 </Form.Group>
   
