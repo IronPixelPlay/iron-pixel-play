@@ -16,7 +16,6 @@ import SortGames from "./pages/SortGames";
 
 function App() {
   const [ userInfo, setUserInfo ] = useState(null);
-  console.log(userInfo)
   return (
     <div>
       <NavbarComponent userInfo={userInfo}/>
@@ -30,10 +29,7 @@ function App() {
         <Route path="/games/sort/:category" element={<SortGames />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route
-          path="/user"
-          element={<ProfilePage updateUser={setUserInfo} />}
-        />
+        <Route path="/user" element={<ProfilePage updateUser={setUserInfo} />}/>
         <Route path="/user/:userId" element={<UserProfilePage />} />
       </Routes>
     </div>
