@@ -46,7 +46,7 @@ function NavbarComponent() {
             {isLoggedIn ? (
               <>
                 <span className="navbar-text d-lg-none" style={{ color: 'white' }}>
-                Hi {user && user.name}! <Image style={{ width: "1em", hight: "1em" }} src={user && user.image} roundedCircle />
+                  Hi {user && user.name}! <Image style={{ width: "1em", height: "1em", borderRadius: "50%" }} src={user && user.image} alt={user && user.name} />
                 </span>
                 <Button variant="danger" onClick={logOutUser} className="d-lg-none">
                   Logout
@@ -70,8 +70,9 @@ function NavbarComponent() {
           {isLoggedIn ? (
             <>
               <span className="navbar-text" style={{ color: 'white' }}>
-              Hi {user && user.name}! <Image style={{ width: "2em", hight: "2em" }} src={user && user.image} roundedCircle />
+                Hi {user && user.name}! <Image style={{ width: "2em", height: "2em", borderRadius: "50%" }} src={user && user.image} alt={user && user.name} />
               </span>
+
               <Button variant="danger" onClick={logOutUser}>
                 Logout
               </Button>
