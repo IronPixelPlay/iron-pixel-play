@@ -40,28 +40,31 @@ function UserProfilePage() {
 
     return (
       <Container>
-        
         <Row>
           <Col>
-          <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
-        <Card.Body>
- 
-            <>
-              
-              <br />
-              <h2>{profileData.user.name}</h2>
-              
-              <Card.Img
-                style={{ width: "100%", height: "170px", objectFit: "cover" }}
-                variant="top"
-                src={profileData.user.image || defaultImage}
-              />
-
-            </>
-          
-        </Card.Body>
-      </Card>
-
+            <Card
+              bg="dark"
+              text="white"
+              className="card-with-spacing bright-shadow"
+            >
+              <Card.Body>
+                <div className="text-center">
+                  <h1>{profileData.user.name}</h1>
+                  <div className="mb-1">
+                    <Card.Img
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                      }}
+                      variant="top"
+                      src={profileData.user.image || defaultImage}
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
           </Col>
           <Col>
             <Card
