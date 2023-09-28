@@ -98,7 +98,7 @@ function GameDetailsPage() {
             <div style={{ marginBottom: '10px' }}><strong>Description:</strong><br />{game.description}</div>
             <div style={{ marginBottom: '10px' }}><strong>Instructions:</strong><br /> {game.instructions}</div>
             <div style={{ marginBottom: '10px' }}>
-              <strong>Visit the game's GitHub repository:</strong><br /> <a href={game.gitHubLink}>GitHub Repository</a>
+              <strong>Visit the game's GitHub repository:</strong><br /> <a href={game.gitHubLink} target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             </div>
             <div>
               <strong>Demo:</strong> <br />
