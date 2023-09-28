@@ -68,9 +68,11 @@ function FilterCategories(props) {
           </div>
         ))}
       </Row>
-      <Button className="danger" onClick={reset}>
-        Reset
-      </Button>
+      <div className="mt-2">
+        <Button className="danger" onClick={reset}>
+          Reset
+        </Button>
+      </div>
 
       <div>
         <Row>
