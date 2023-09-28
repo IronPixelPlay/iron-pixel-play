@@ -23,8 +23,8 @@ function UserProfileCard(props) {
             <div className="mb-1">
               <Card.Img
                 style={{
-                  width: "100px",
-                  height: "100px",
+                  width: "200px",
+                  height: "200px",
                   objectFit: "cover",
                   borderRadius: "50%",
                 }}
