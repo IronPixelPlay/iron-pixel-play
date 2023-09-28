@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import { PacmanLoader } from "react-spinners";
 import defaultImage from "../images/pacman-6450.gif";
-import UserProfileCard from "../components/UserProfileCard";
 
-function ProfilePage() {
+
+function UserProfilePage() {
   const [profileData, setProfileData] = useState(null);
 
   const storedToken = localStorage.getItem("authToken");
+    const {userId} = useParams()
 
   const getProfileData = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/user`, {
+      .get(`${import.meta.env.VITE_API_URL}/user/${userId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -39,14 +40,28 @@ function ProfilePage() {
 
     return (
       <Container>
-        <h1>Hi {profileData.user.name}!</h1>
-
+        
         <Row>
           <Col>
-            <UserProfileCard
-              profileData={profileData}
-              refreshProfile={getProfileData}
-            />
+          <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+        <Card.Body>
+ 
+            <>
+              
+              <br />
+              <h2>{profileData.user.name}</h2>
+              
+              <Card.Img
+                style={{ width: "100%", height: "170px", objectFit: "cover" }}
+                variant="top"
+                src={profileData.user.image || defaultImage}
+              />
+
+            </>
+          
+        </Card.Body>
+      </Card>
+
           </Col>
           <Col>
             <Card
@@ -55,7 +70,7 @@ function ProfilePage() {
               className="card-with-spacing bright-shadow"
             >
               <Card.Body>
-                <h2>Your current games</h2>
+                <h2>{profileData.user.name}'s games</h2>
                 {profileData.game.map((userGame) => (
                   <div key={userGame.demo}>
                     <Link to={`/games/${userGame._id}`}>
@@ -92,7 +107,7 @@ function ProfilePage() {
               className="card-with-spacing bright-shadow"
             >
               <Card.Body>
-                <h2>Your recent reviews</h2>
+                <h2>{profileData.user.name}'s recent activity</h2>
                 {profileData.reviews.map((userReview) => (
                   <div key={userReview.title}>
                     <Link to={`/games/${userReview.game}`}>
@@ -118,7 +133,7 @@ function ProfilePage() {
               className="card-with-spacing bright-shadow"
             >
               <Card.Body>
-                <h2>Your recently played games</h2>
+                <h2>{profileData.user.name}'s recently played games</h2>
                 {profileData.reviews.map((userReview) =>
                   userReview.played === true ? (
                     <div key={userReview.title}>
@@ -158,4 +173,4 @@ function ProfilePage() {
   return <>{renderUser()}</>;
 }
 
-export default ProfilePage;
+export default UserProfilePage;
