@@ -7,7 +7,7 @@ function GameCard({ title, description, image, _id }) {
     const imageUrl = image || defaultImage
 
     return (
-        <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+        <Card bg="dark" text="white" className="card-with-spacing card-size bright-shadow">
           <Card.Img style={{ width: '100%', height: '190px', objectFit: 'cover' }} variant="top" src={imageUrl} />
           <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <Card.Title>
