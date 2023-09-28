@@ -92,7 +92,7 @@ function ProfilePage() {
               className="card-with-spacing bright-shadow"
             >
               <Card.Body>
-                <h2>Your recent activity</h2>
+                <h2>Your recent reviews</h2>
                 {profileData.reviews.map((userReview) => (
                   <div key={userReview.title}>
                     <Link to={`/games/${userReview.game}`}>

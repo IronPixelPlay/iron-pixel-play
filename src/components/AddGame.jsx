@@ -12,6 +12,7 @@ function AddGame(props) {
   const [instructions, setInstructions] = useState("");
   const [description, setDescription] = useState("");
   const [gitHubLink, setGitHubLink] = useState("");
+  const [upload, setUpload] = useState(false)
 
   const navigate = useNavigate()
 
@@ -21,12 +22,18 @@ function AddGame(props) {
 
     uploadData.append("image", e.target.files[0]);
 
+    setUpload(true)
+
     service
       .uploadImage(uploadData)
       .then((response) => {
         setImage(response.fileUrl);
+        setUpload(false)
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+      .catch((err) => {
+        setUpload(false)
+        console.log("Error while uploading the file: ", err);
+      })
   };
 
   const handleSubmit = (e) => {
@@ -70,7 +77,7 @@ function AddGame(props) {
             <Form onSubmit={handleSubmit}>
               <div className="text-center">
                 <Form.Group controlId="title">
-                  <Form.Label>Title:</Form.Label>
+                  <Form.Label>Title*:</Form.Label>
                   <Form.Control
                     type="text"
                     value={title}
@@ -88,7 +95,7 @@ function AddGame(props) {
                 </Form.Group>
   
                 <Form.Group controlId="demo">
-                  <Form.Label>Demo:</Form.Label>
+                  <Form.Label>Demo*:</Form.Label>
                   <Form.Control
                     type="url"
                     value={demo}
@@ -143,7 +150,7 @@ function AddGame(props) {
                 </Form.Group>
   
                 <Form.Group controlId="gitHubLink">
-                  <Form.Label>Your GitHub Link:</Form.Label>
+                  <Form.Label>Your GitHub Link*:</Form.Label>
                   <Form.Control
                     type="url"
                     value={gitHubLink}
@@ -153,7 +160,7 @@ function AddGame(props) {
                 </Form.Group>
               </div>
               <div className="text-center">
-              <Button variant="primary" type="submit" style={{ marginBottom: "5px", marginTop: "5px" }}>
+              <Button variant="primary" type="submit" style={{ marginBottom: "5px", marginTop: "5px", visibility: upload ? "hidden" : "visible"  }}>
                   Submit
                 </Button>
               </div>
