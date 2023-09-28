@@ -77,7 +77,7 @@ function AddGame(props) {
             <Form onSubmit={handleSubmit}>
               <div className="text-center">
                 <Form.Group controlId="title">
-                  <Form.Label>Title:</Form.Label>
+                  <Form.Label>Title*:</Form.Label>
                   <Form.Control
                     type="text"
                     value={title}
@@ -95,7 +95,7 @@ function AddGame(props) {
                 </Form.Group>
   
                 <Form.Group controlId="demo">
-                  <Form.Label>Demo:</Form.Label>
+                  <Form.Label>Demo*:</Form.Label>
                   <Form.Control
                     type="url"
                     value={demo}
@@ -150,7 +150,7 @@ function AddGame(props) {
                 </Form.Group>
   
                 <Form.Group controlId="gitHubLink">
-                  <Form.Label>Your GitHub Link:</Form.Label>
+                  <Form.Label>Your GitHub Link*:</Form.Label>
                   <Form.Control
                     type="url"
                     value={gitHubLink}

@@ -63,7 +63,7 @@ function SignupPage(props) {
               Sign Up
             </h3>
             <Form.Group controlId="name">
-                <Form.Label>Name:</Form.Label>
+                <Form.Label>Name*:</Form.Label>
                 <Form.Control
                   type="text"
                   name="name"
@@ -83,7 +83,7 @@ function SignupPage(props) {
 
             <Form onSubmit={handleSignupSubmit}>
               <Form.Group controlId="email">
-                <Form.Label>Email:</Form.Label>
+                <Form.Label>Email*:</Form.Label>
                 <Form.Control
                   type="email"
                   name="email"
@@ -94,7 +94,7 @@ function SignupPage(props) {
               </Form.Group>
 
               <Form.Group controlId="password">
-                <Form.Label>Password:</Form.Label>
+                <Form.Label>Password*:</Form.Label>
                 <Form.Control
                   type="password"
                   name="password"
