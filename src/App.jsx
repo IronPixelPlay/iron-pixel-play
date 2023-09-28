@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import SignupPage from './pages/SingupPage'
+import UserProfilePage from './pages/UserProfilePage'
 import NavbarComponent from './components/Navbar'
 import CreateGame from "./pages/CreateGame"
 import { Route, Routes } from 'react-router-dom'
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/user" element={<ProfilePage />} />
+        <Route path="/user/:userId" element={<UserProfilePage/>} />
       </Routes>
     </div>
   );
