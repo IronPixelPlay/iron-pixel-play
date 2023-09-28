@@ -92,7 +92,7 @@ function GameDetailsPage() {
             <Card.Title><h1>{game.title}</h1></Card.Title>
             <Card.Img style={{ maxWidth: '100%', maxHeight: '200px', objectFit: 'contain' }} variant="top" src={imageUrl} alt={game.title} />
 
-            <div style={{ marginBottom: '10px' }}><strong>Created by:</strong> <br /><Link to={`/user/${game.user}`}><Image style={{ width: "3em", height: "3em", borderRadius: "50%" }} src={game && game.owner} alt={game && game.owner} /></Link></div>
+            <div style={{ marginBottom: '10px' }}><strong>Created by:</strong> <br /><Link to={`/user/${game.user}`}><Image style={{ width: "3em", height: "3em", borderRadius: "50%" }} src={game && game.owner || defaultImage} alt={game && game.owner} /></Link></div>
             
             <div style={{ marginBottom: '10px' }}><strong>Category:</strong> <br />{game.category}</div>
             <div style={{ marginBottom: '10px' }}><strong>Description:</strong><br />{game.description}</div>
