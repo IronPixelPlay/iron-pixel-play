@@ -37,26 +37,41 @@ function ReviewCard(props) {
           <EditReview {...props} setEditMode={setEditMode} />
         ) : (
           <>
-            <div style={{ marginBottom: '10px' }}><strong>Created by:</strong> <br /><Link to={`/user/${props.user}`}><Image style={{ width: "3em", height: "3em", borderRadius: "50%" }} src={props && props.owner || defaultImage} alt={props && props.owner} /></Link></div>
+            <div style={{ marginBottom: "10px" }}>
+              <strong>Created by:</strong> <br />
+              <Link to={`/user/${props.user}`}>
+                <Image
+                  style={{ width: "3em", height: "3em", borderRadius: "50%" }}
+                  src={props && (props.owner || defaultImage)}
+                  alt={props && props.owner}
+                />
+              </Link>
+            </div>
             <Card.Title>{props.title}</Card.Title>
-            <div style={{ marginBottom: '10px' }}>
+            <div style={{ marginBottom: "10px" }}>
               <strong>Review:</strong> {props.review}
             </div>
-            <div style={{ marginBottom: '10px' }}>
-              <strong>Rating:</strong> <span className="yellow-stars">{generateStars(props.rating ? props.rating : 1)}</span>
+            <div style={{ marginBottom: "10px" }}>
+              <strong>Rating:</strong>{" "}
+              <span className="yellow-stars">
+                {generateStars(props.rating ? props.rating : 1)}
+              </span>
             </div>
-            <div style={{ marginBottom: '10px' }}>
-              <strong>Played:</strong> {props.played ? 'Yes' : 'No'}
+            <div style={{ marginBottom: "10px" }}>
+              <strong>Played:</strong> {props.played ? "Yes" : "No"}
             </div>
 
             {contextData.user && contextData.user._id === props.user && (
               <div className="mt-3">
-                <Button variant="primary" onClick={() => setEditMode(true)}>Edit</Button>
+                <Button variant="primary" onClick={() => setEditMode(true)}>
+                  Edit
+                </Button>
                 <span className="mx-2"></span>
-                <Button variant="danger" onClick={deleteReview}>Delete</Button>
+                <Button variant="danger" onClick={deleteReview}>
+                  Delete
+                </Button>
               </div>
             )}
-
           </>
         )}
       </Card.Body>
