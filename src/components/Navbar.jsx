@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Navbar, Nav, Button, Container, NavDropdown, Image } from 'react-bootstrap';
+import defaultImage from "../images/pacman-6450.gif";
 
 function NavbarComponent() {
   const {
@@ -46,7 +47,7 @@ function NavbarComponent() {
             {isLoggedIn ? (
               <>
                 <span className="navbar-text d-lg-none" style={{ color: 'white' }}>
-                  Hi {user && user.name}! <Image style={{ width: "1em", height: "1em", borderRadius: "50%" }} src={user && user.image} alt={user && user.name} />
+                  Hi {user && user.name}! <Image style={{ width: "1em", height: "1em", borderRadius: "50%" }} src={user && user.image || user && defaultImage} alt={user && user.name} />
                 </span>
                 <Button variant="danger" onClick={logOutUser} className="d-lg-none">
                   Logout
@@ -70,7 +71,7 @@ function NavbarComponent() {
           {isLoggedIn ? (
             <>
               <span className="navbar-text" style={{ color: 'white' }}>
-                Hi {user && user.name}! <Image style={{ width: "2em", height: "2em", borderRadius: "50%" }} src={user && user.image} alt={user && user.name} />
+                Hi {user && user.name}! <Image style={{ width: "2em", height: "2em", borderRadius: "50%" }} src={user && user.image || user && defaultImage} alt={user && user.name} />
               </span>
 
               <Button variant="danger" onClick={logOutUser}>
