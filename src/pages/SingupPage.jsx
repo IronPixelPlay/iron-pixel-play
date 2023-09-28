@@ -10,6 +10,7 @@ function SignupPage(props) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("")
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [upload, setUpload] = useState(false)
 
   const navigate = useNavigate();
 
@@ -19,12 +20,18 @@ function SignupPage(props) {
 
     uploadData.append("image", e.target.files[0]);
 
+    setUpload(true)
+
     service
       .uploadImage(uploadData)
       .then((response) => {
         setImage(response.fileUrl);
+        setUpload(false)
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+      .catch((err) => {
+        setUpload(false)
+        console.log("Error while uploading the file: ", err);
+      })
   };
 
   const handleEmail = (e) => setEmail(e.target.value);
@@ -63,23 +70,23 @@ function SignupPage(props) {
               Sign Up
             </h3>
             <Form.Group controlId="name">
-                <Form.Label>Name*:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={handleName}
-                  required
-                />
-              </Form.Group>
+              <Form.Label>Name*:</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleName}
+                required
+              />
+            </Form.Group>
 
-              <Form.Group controlId="image">
-                  <Form.Label>Profile Picture:</Form.Label>
-                  <Form.Control
-                    type="file"
-                    onChange={(e) => handleFileUpload(e)}
-                  />
-                </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Profile Picture:</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(e) => handleFileUpload(e)}
+              />
+            </Form.Group>
 
             <Form onSubmit={handleSignupSubmit}>
               <Form.Group controlId="email">
@@ -108,7 +115,7 @@ function SignupPage(props) {
                 <Button
                   variant="primary"
                   type="submit"
-                  style={{ marginBottom: "5px", marginTop: "5px" }}
+                  style={{ marginBottom: "5px", marginTop: "5px", visibility: upload ? "hidden" : "visible" }}
                 >
                   Sign Up
                 </Button>
