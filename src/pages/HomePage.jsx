@@ -52,9 +52,9 @@ function HomePage() {
           </Link>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item style={{ maxHeight: '80vh' }}>
           <Link to={`/games/sort/Puzzle`}>
-            <img src={puzzle} style={{ width: '100vw', height: '80vh' }} alt="puzzle" />
+            <img src={puzzle} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="puzzle" />
             <Carousel.Caption>
               <h3>Puzzle</h3>
               <p>
@@ -88,9 +88,9 @@ function HomePage() {
           </Link>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item style={{ maxHeight: '80vh' }}>
           <Link to={`/games/sort/Sports`}>
-            <img src={sports} style={{ width: '100vw', height: '80vh' }} alt="sports" />
+            <img src={sports} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="sports" />
             <Carousel.Caption>
               <h3>Sports & Racing</h3>
               <p>
