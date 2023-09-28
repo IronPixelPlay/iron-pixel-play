@@ -6,7 +6,7 @@ import { PacmanLoader } from "react-spinners";
 import defaultImage from "../images/pacman-6450.gif";
 import UserProfileCard from "../components/UserProfileCard";
 
-function ProfilePage() {
+function ProfilePage({updateUser}) {
   const [profileData, setProfileData] = useState(null);
 
   const storedToken = localStorage.getItem("authToken");
@@ -18,6 +18,7 @@ function ProfilePage() {
       })
       .then((response) => {
         setProfileData(response.data);
+        updateUser(response.data.user)
       })
       .catch((error) => {
         console.log(error);

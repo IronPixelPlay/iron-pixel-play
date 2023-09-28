@@ -39,7 +39,6 @@ function EditProfile(props) {
       .then((response) => {
         props.refreshProfileData();
         props.setEditMode(false);
-        navigate(`/user`);
       })
       .catch((err) => console.log(err));
   };
