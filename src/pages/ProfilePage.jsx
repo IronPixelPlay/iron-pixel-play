@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import { PacmanLoader } from "react-spinners";
 import defaultImage from "../images/pacman-6450.gif";
-
+import UserProfileCard from "../components/UserProfileCard";
 
 function ProfilePage() {
-  const [profileData, setProfileData] = useState(null)
+  const [profileData, setProfileData] = useState(null);
 
-  const storedToken = localStorage.getItem('authToken');
+  const storedToken = localStorage.getItem("authToken");
 
   const getProfileData = () => {
     axios
@@ -32,13 +32,9 @@ function ProfilePage() {
     if (profileData === null) {
       return (
         <div className="loader-container">
-          <PacmanLoader
-            color="#05ffe9"
-            size={100}
-          />
+          <PacmanLoader color="#05ffe9" size={100} />
         </div>
-      )
-
+      );
     }
 
     return (
@@ -47,15 +43,33 @@ function ProfilePage() {
 
         <Row>
           <Col>
-            <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+            <UserProfileCard
+              profileData={profileData}
+              refreshProfile={getProfileData}
+            />
+          </Col>
+          <Col>
+            <Card
+              bg="dark"
+              text="white"
+              className="card-with-spacing bright-shadow"
+            >
               <Card.Body>
                 <h2>Your current games:</h2>
                 {profileData.game.map((userGame) => (
                   <div key={userGame.demo}>
                     <Link to={`/games/${userGame._id}`}>
-                      <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+                      <Card
+                        bg="dark"
+                        text="white"
+                        className="card-with-spacing bright-shadow"
+                      >
                         <Card.Img
-                          style={{ width: '100%', height: '170px', objectFit: 'cover' }}
+                          style={{
+                            width: "100%",
+                            height: "170px",
+                            objectFit: "cover",
+                          }}
                           variant="top"
                           src={userGame.image || defaultImage}
                         />
@@ -69,14 +83,24 @@ function ProfilePage() {
               </Card.Body>
             </Card>
           </Col>
+        </Row>
+        <Row>
           <Col>
-            <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+            <Card
+              bg="dark"
+              text="white"
+              className="card-with-spacing bright-shadow"
+            >
               <Card.Body>
                 <h2>Your recent activity:</h2>
                 {profileData.reviews.map((userReview) => (
                   <div key={userReview.title}>
                     <Link to={`/games/${userReview.game}`}>
-                      <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+                      <Card
+                        bg="dark"
+                        text="white"
+                        className="card-with-spacing bright-shadow"
+                      >
                         <Card.Body>
                           <Card.Title>{userReview.title}</Card.Title>
                         </Card.Body>
@@ -86,34 +110,50 @@ function ProfilePage() {
                 ))}
               </Card.Body>
             </Card>
-
-            <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
+          </Col>
+          <Col>
+            <Card
+              bg="dark"
+              text="white"
+              className="card-with-spacing bright-shadow"
+            >
               <Card.Body>
                 <h2>Your recently played games:</h2>
-                {profileData.reviews.map((userReview) => ( userReview.played === true ? <div key={userReview.title}>
-                    <Link to={`/games/${userReview.game}`}>
-                      <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
-                        <Card.Body>
-                        <Card.Img
-                          style={{ width: '100%', height: '170px', objectFit: 'cover' }}
-                          variant="top"
-                          src={userReview.game.image || defaultImage}
-                        />
-                          <Card.Title>{userReview.title}</Card.Title>
-                        </Card.Body>
-                      </Card>
-                    </Link>
-                  </div> : <></>
-                ))}
+                {profileData.reviews.map((userReview) =>
+                  userReview.played === true ? (
+                    <div key={userReview.title}>
+                      <Link to={`/games/${userReview.game}`}>
+                        <Card
+                          bg="dark"
+                          text="white"
+                          className="card-with-spacing bright-shadow"
+                        >
+                          <Card.Body>
+                            <Card.Img
+                              style={{
+                                width: "100%",
+                                height: "170px",
+                                objectFit: "cover",
+                              }}
+                              variant="top"
+                              src={userReview.game.image || defaultImage}
+                            />
+                            <Card.Title>{userReview.title}</Card.Title>
+                          </Card.Body>
+                        </Card>
+                      </Link>
+                    </div>
+                  ) : (
+                    <></>
+                  )
+                )}
               </Card.Body>
             </Card>
-
-
           </Col>
         </Row>
       </Container>
     );
-  }
+  };
 
   return <>{renderUser()}</>;
 }
