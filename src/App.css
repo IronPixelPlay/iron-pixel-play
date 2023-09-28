@@ -13,7 +13,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-with-spacing {
   margin: 10px 0;
-  min-height: 350px;
 }
 
 .bright-shadow {
@@ -23,6 +22,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .bright-shadow:hover {
   box-shadow: 0px 8px 16px rgba(252, 248, 248, 0.1), 0px 12px 24px rgba(252, 248, 248, 0.1);
+}
+
+.card-size {
+  min-height: 350px;
 }
 
 .navbar a {
