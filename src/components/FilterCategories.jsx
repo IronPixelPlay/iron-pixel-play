@@ -52,6 +52,7 @@ function FilterCategories(props) {
     selectedCategories.forEach((selectedCategory)=>{
       selectedCategory.classList.remove('active')
       setFilteredGames(games)
+      setSelectedFilters([])
     })
   };
 
