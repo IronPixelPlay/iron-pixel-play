@@ -7,28 +7,27 @@ import { Card, Button, Image } from "react-bootstrap";
 import defaultImage from "../images/pacman-6450.gif";
 
 function generateStars(rating) {
-  const stars = '★'.repeat(rating);
+  const stars = "★".repeat(rating);
   return stars;
 }
 
-
 function ReviewCard(props) {
-  const contextData = useContext(AuthContext)
-  const navigate = useNavigate()
-  const { gameId } = useParams()
-  const [editMode, setEditMode] = useState(false)
+  const { isLoggedIn } = useContext(AuthContext);
+  const contextData = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { gameId } = useParams();
+  const [editMode, setEditMode] = useState(false);
   const deleteReview = () => {
-
     axios
-      .delete(`${import.meta.env.VITE_API_URL}/games/${gameId}/reviews/${props._id}`)
+      .delete(
+        `${import.meta.env.VITE_API_URL}/games/${gameId}/reviews/${props._id}`
+      )
       .then(() => {
-
-        props.refreshReviews()
+        props.refreshReviews();
         navigate(`/games/${gameId}`);
       })
       .catch((err) => console.log(err));
   };
-
 
   return (
     <Card bg="dark" text="white" className="card-with-spacing bright-shadow">
@@ -39,13 +38,23 @@ function ReviewCard(props) {
           <>
             <div style={{ marginBottom: "10px" }}>
               <strong>Created by:</strong> <br />
-              <Link to={`/user/${props.user}`}>
-                <Image
-                  style={{ width: "3em", height: "3em", borderRadius: "50%" }}
-                  src={props && (props.owner || defaultImage)}
-                  alt={props && props.owner}
-                />
-              </Link>
+              {isLoggedIn ? (
+                <Link to={`/user/${props.user}`}>
+                  <Image
+                    style={{ width: "3em", height: "3em", borderRadius: "50%" }}
+                    src={props && (props.owner || defaultImage)}
+                    alt={props && props.owner}
+                  />
+                </Link>
+              ) : (
+                <Link to={`/login`}>
+                  <Image
+                    style={{ width: "3em", height: "3em", borderRadius: "50%" }}
+                    src={props && (props.owner || defaultImage)}
+                    alt={props && props.owner}
+                  />
+                </Link>
+              )}
             </div>
             <Card.Title>{props.title}</Card.Title>
             <div style={{ marginBottom: "10px" }}>
