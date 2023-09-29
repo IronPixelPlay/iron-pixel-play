@@ -34,7 +34,7 @@ function HomePage() {
         </Carousel.Item>
 
         <Carousel.Item style={{ maxHeight: '80vh' }}>
-          <Link to={`/games/sort/Action&Adventure`}>
+          <Link to={`/games/sort/Action-Adventure`}>
             <img src={action} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="action" />
             <Carousel.Caption>
               <h3>Action & Adventure</h3>
