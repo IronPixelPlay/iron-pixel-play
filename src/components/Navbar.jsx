@@ -75,6 +75,53 @@ function NavbarComponent(props) {
               </>
             )}
           </Nav>
+          <div className="navbar-right">
+            {isLoggedIn ? (
+              <>
+                <span
+                  className="navbar-text d-lg-none"
+                  style={{ color: "white" }}
+                >
+                  
+                  Hi {user && user.name}!{" "}
+                  <Image
+                    style={{ width: "1em", height: "1em", borderRadius: "50%" }}
+                    src={(user && user.image) || (user && defaultImage)}
+                    alt={user && user.name}
+                  />
+                  
+                </span>
+                <Button
+                  variant="danger"
+                  onClick={logOutUser}
+                  className="d-lg-none"
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+               <>
+                <Nav>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/signup"
+                    style={{ color: "white" }}
+                    className="d-lg-none"
+                  >
+                    Sign Up
+                  </Nav.Link>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/login"
+                    style={{ color: "white" }}
+                    className="d-lg-none"
+                  >
+                    Login
+                  </Nav.Link>
+                </Nav>
+              </>
+             )} 
+          </div> 
         </Navbar.Collapse>
 
 
